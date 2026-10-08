@@ -1,41 +1,1008 @@
 <!doctype html>
 <html lang="fr">
-<head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Galerie d’art indépendante. Œuvres originales, collections et contact avec l’artiste.">
-<title>Galerie Chico — Art original</title>
-<style>
-:root{--ink:#25231f;--muted:#79766f;--paper:#f7f5f0;--line:#ddd9d0;--accent:#9b503d}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,Helvetica,sans-serif}a{color:inherit;text-decoration:none}button,input,textarea{font:inherit}header{position:sticky;top:0;z-index:10;background:#f7f5f0eb;backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}.nav{max-width:1240px;margin:auto;padding:22px 5%;display:flex;justify-content:space-between;align-items:center}.brand{font-family:Georgia,serif;letter-spacing:.12em;font-size:21px}.navlinks{display:flex;gap:28px;font-size:12px;letter-spacing:.14em;text-transform:uppercase}.navlinks a:hover,.textlink:hover{color:var(--accent)}main{overflow:hidden}.wrap{max-width:1240px;margin:auto;padding:0 5%}.hero{min-height:620px;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:7%;padding-top:80px;padding-bottom:90px}.eyebrow{font-size:11px;letter-spacing:.23em;text-transform:uppercase;color:var(--accent)}h1,h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:400}h1{font-size:clamp(56px,7vw,112px);line-height:.99;letter-spacing:-.05em;margin:24px 0}h2{font-size:clamp(38px,5vw,68px);letter-spacing:-.035em;margin:12px 0 25px}.lead{max-width:420px;line-height:1.9;color:#625e57;font-size:16px}.cta{display:inline-flex;gap:24px;align-items:center;border-bottom:1px solid var(--ink);padding:14px 0;margin-top:25px;font-size:12px;letter-spacing:.15em;text-transform:uppercase}.heroart{height:540px;background:#e9e3d8;display:flex;align-items:center;justify-content:center;padding:35px}.artwork{position:relative;width:100%;height:100%;overflow:hidden;background:linear-gradient(145deg,#d8b6a0 0%,#b9664d 47%,#502d3b 100%)}.artwork:before{content:'';position:absolute;width:65%;height:80%;left:14%;top:8%;background:#f0d1a7;border-radius:55% 35% 40% 45%;transform:rotate(-22deg);box-shadow:30px 45px 0 #653a4d}.artwork:after{content:'';position:absolute;width:50%;height:20%;bottom:14%;right:-4%;background:#d49d68;transform:rotate(-18deg);border-radius:50%}.section{padding-top:110px;padding-bottom:110px}.sectionhead{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:42px}.small{font-size:13px;color:var(--muted);line-height:1.8}.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}.piece{cursor:pointer;text-align:left;background:none;border:0;padding:0;color:inherit}.piece .frame{aspect-ratio:4/5;background:#e9e3d8;padding:18px;overflow:hidden}.piece .painting{height:100%;transition:transform .4s}.piece:hover .painting{transform:scale(1.04)}.painting.a{background:radial-gradient(ellipse at 35% 38%,#e5b96c 0 16%,transparent 17%),radial-gradient(ellipse at 62% 66%,#5d7180 0 27%,transparent 28%),linear-gradient(135deg,#c25e42,#ebcba7)}.painting.b{background:radial-gradient(ellipse at 50% 45%,#d0b1b2 0 29%,transparent 30%),linear-gradient(30deg,#332f47 0 35%,#e7b77f 36% 60%,#7c4949 61%)}.painting.c{background:radial-gradient(ellipse at 70% 35%,#e2ad6d 0 24%,transparent 25%),linear-gradient(145deg,#b1b7a3,#455a50 60%,#ddc8b1)}.piece h3{font-size:23px;margin:18px 0 5px}.piece .small{margin:0}.note{font-size:12px;color:var(--muted);margin-top:25px}.about{background:#eae6de}.aboutgrid{display:grid;grid-template-columns:1fr 1fr;gap:12%;align-items:center}.aboutvisual{aspect-ratio:4/3;background:linear-gradient(140deg,#c9b9a4 0 35%,#71685c 36% 55%,#d9c9b6 56%);display:flex;align-items:end;padding:25px;color:white;font:italic 30px Georgia,serif}.about p{line-height:2;color:#625e57;max-width:480px}.contactgrid{display:grid;grid-template-columns:1fr 1fr;gap:12%}.contactform{display:grid;gap:20px}.field{display:grid;gap:8px}.field label{font-size:11px;text-transform:uppercase;letter-spacing:.15em}.field input,.field textarea{border:0;border-bottom:1px solid #aaa59b;background:transparent;padding:13px 0;outline:none;border-radius:0;color:var(--ink)}.field input:focus,.field textarea:focus{border-color:var(--accent)}.submit{cursor:pointer;background:var(--ink);color:white;border:0;padding:18px 24px;letter-spacing:.13em;text-transform:uppercase;font-size:11px}.submit:hover{background:var(--accent)}footer{border-top:1px solid var(--line);padding:28px 5%;font-size:12px;color:var(--muted);display:flex;justify-content:space-between;gap:15px}.modal{position:fixed;inset:0;background:#211e1bdc;z-index:30;display:none;align-items:center;justify-content:center;padding:25px}.modal.open{display:flex}.modalinner{max-width:750px;width:100%;background:var(--paper);padding:35px;position:relative}.modal .painting{height:340px}.close{position:absolute;right:15px;top:10px;border:0;background:none;font-size:28px;cursor:pointer}.modal h3{margin:20px 0 8px;font-size:28px}.modal p{color:var(--muted)}@media(max-width:760px){.nav{padding:18px 5%}.navlinks{gap:12px;font-size:10px}.brand{font-size:16px}.hero{grid-template-columns:1fr;padding-top:55px;gap:40px;min-height:0}.heroart{height:420px}.section{padding-top:75px;padding-bottom:75px}.gallery{grid-template-columns:1fr 1fr;gap:20px}.aboutgrid,.contactgrid{grid-template-columns:1fr;gap:35px}.sectionhead{display:block}.piece h3{font-size:20px}}@media(max-width:440px){.gallery{grid-template-columns:1fr}.heroart{height:360px}}
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <meta content="Galerie d’art indépendante. Œuvres originales, collections et contact avec l’artiste." name="description"/>
+  <title>
+   Galerie Chico — Art original
+  </title>
+  <style>
+   :root {
+  --ink:#25231f;
+  --muted:#79766f;
+  --paper:#f7f5f0;
+  --line:#ddd9d0;
+  --accent:#9b503d;
+}
+
+* {
+  box-sizing:border-box;
+}
+
+html {
+  scroll-behavior:smooth;
+}
+
+body {
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:Arial,Helvetica,sans-serif;
+}
+
+a {
+  color:inherit;
+  text-decoration:none;
+}
+
+button,input,textarea {
+  font:inherit;
+}
+
+header {
+  position:sticky;
+  top:0;
+  z-index:10;
+  background:#f7f5f0eb;
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+
+.nav {
+  max-width:1240px;
+  margin:auto;
+  padding:22px 5%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.brand {
+  font-family:Georgia,serif;
+  letter-spacing:.12em;
+  font-size:21px;
+}
+
+.navlinks {
+  display:flex;
+  gap:28px;
+  font-size:12px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+.navlinks a:hover,.textlink:hover {
+  color:var(--accent);
+}
+
+main {
+  overflow:hidden;
+}
+
+.wrap {
+  max-width:1240px;
+  margin:auto;
+  padding:0 5%;
+}
+
+.hero {
+  min-height:620px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:center;
+  gap:7%;
+  padding-top:80px;
+  padding-bottom:90px;
+}
+
+.eyebrow {
+  font-size:11px;
+  letter-spacing:.23em;
+  text-transform:uppercase;
+  color:var(--accent);
+}
+
+h1,h2,h3 {
+  font-family:Georgia,'Times New Roman',serif;
+  font-weight:400;
+}
+
+h1 {
+  font-size:clamp(56px,7vw,112px);
+  line-height:.99;
+  letter-spacing:-.05em;
+  margin:24px 0;
+}
+
+h2 {
+  font-size:clamp(38px,5vw,68px);
+  letter-spacing:-.035em;
+  margin:12px 0 25px;
+}
+
+.lead {
+  max-width:420px;
+  line-height:1.9;
+  color:#625e57;
+  font-size:16px;
+}
+
+.cta {
+  display:inline-flex;
+  gap:24px;
+  align-items:center;
+  border-bottom:1px solid var(--ink);
+  padding:14px 0;
+  margin-top:25px;
+  font-size:12px;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+}
+
+.heroart {
+  height:540px;
+  background:#e9e3d8;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:35px;
+}
+
+.artwork {
+  position:relative;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  background:linear-gradient(145deg,#d8b6a0 0%,#b9664d 47%,#502d3b 100%);
+}
+
+.artwork:before {
+  content:'';
+  position:absolute;
+  width:65%;
+  height:80%;
+  left:14%;
+  top:8%;
+  background:#f0d1a7;
+  border-radius:55% 35% 40% 45%;
+  transform:rotate(-22deg);
+  box-shadow:30px 45px 0 #653a4d;
+}
+
+.artwork:after {
+  content:'';
+  position:absolute;
+  width:50%;
+  height:20%;
+  bottom:14%;
+  right:-4%;
+  background:#d49d68;
+  transform:rotate(-18deg);
+  border-radius:50%;
+}
+
+.section {
+  padding-top:110px;
+  padding-bottom:110px;
+}
+
+.sectionhead {
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:30px;
+  margin-bottom:42px;
+}
+
+.small {
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.8;
+}
+
+.gallery {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:28px;
+}
+
+.piece {
+  cursor:pointer;
+  text-align:left;
+  background:none;
+  border:0;
+  padding:0;
+  color:inherit;
+}
+
+.piece .frame {
+  aspect-ratio:4/5;
+  background:#e9e3d8;
+  padding:18px;
+  overflow:hidden;
+}
+
+.piece .painting {
+  height:100%;
+  transition:transform .4s;
+}
+
+.piece:hover .painting {
+  transform:scale(1.04);
+}
+
+.painting.a {
+  background:radial-gradient(ellipse at 35% 38%,#e5b96c 0 16%,transparent 17%),radial-gradient(ellipse at 62% 66%,#5d7180 0 27%,transparent 28%),linear-gradient(135deg,#c25e42,#ebcba7);
+}
+
+.painting.b {
+  background:radial-gradient(ellipse at 50% 45%,#d0b1b2 0 29%,transparent 30%),linear-gradient(30deg,#332f47 0 35%,#e7b77f 36% 60%,#7c4949 61%);
+}
+
+.painting.c {
+  background:radial-gradient(ellipse at 70% 35%,#e2ad6d 0 24%,transparent 25%),linear-gradient(145deg,#b1b7a3,#455a50 60%,#ddc8b1);
+}
+
+.piece h3 {
+  font-size:23px;
+  margin:18px 0 5px;
+}
+
+.piece .small {
+  margin:0;
+}
+
+.note {
+  font-size:12px;
+  color:var(--muted);
+  margin-top:25px;
+}
+
+.about {
+  background:#eae6de;
+}
+
+.aboutgrid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12%;
+  align-items:center;
+}
+
+.aboutvisual {
+  aspect-ratio:4/3;
+  background:linear-gradient(140deg,#c9b9a4 0 35%,#71685c 36% 55%,#d9c9b6 56%);
+  display:flex;
+  align-items:end;
+  padding:25px;
+  color:white;
+  font:italic 30px Georgia,serif;
+}
+
+.about p {
+  line-height:2;
+  color:#625e57;
+  max-width:480px;
+}
+
+.contactgrid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12%;
+}
+
+.contactform {
+  display:grid;
+  gap:20px;
+}
+
+.field {
+  display:grid;
+  gap:8px;
+}
+
+.field label {
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.15em;
+}
+
+.field input,.field textarea {
+  border:0;
+  border-bottom:1px solid #aaa59b;
+  background:transparent;
+  padding:13px 0;
+  outline:none;
+  border-radius:0;
+  color:var(--ink);
+}
+
+.field input:focus,.field textarea:focus {
+  border-color:var(--accent);
+}
+
+.submit {
+  cursor:pointer;
+  background:var(--ink);
+  color:white;
+  border:0;
+  padding:18px 24px;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  font-size:11px;
+}
+
+.submit:hover {
+  background:var(--accent);
+}
+
+footer {
+  border-top:1px solid var(--line);
+  padding:28px 5%;
+  font-size:12px;
+  color:var(--muted);
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+}
+
+.modal {
+  position:fixed;
+  inset:0;
+  background:#211e1bdc;
+  z-index:30;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:25px;
+}
+
+.modal.open {
+  display:flex;
+}
+
+.modalinner {
+  max-width:750px;
+  width:100%;
+  background:var(--paper);
+  padding:35px;
+  position:relative;
+}
+
+.modal .painting {
+  height:340px;
+}
+
+.close {
+  position:absolute;
+  right:15px;
+  top:10px;
+  border:0;
+  background:none;
+  font-size:28px;
+  cursor:pointer;
+}
+
+.modal h3 {
+  margin:20px 0 8px;
+  font-size:28px;
+}
+
+.modal p {
+  color:var(--muted);
+}
+
+@media(max-width:760px) {
+  .nav {
+    padding:18px 5%;
+  }
+  .navlinks {
+    gap:12px;
+    font-size:10px;
+  }
+  .brand {
+    font-size:16px;
+  }
+  .hero {
+    grid-template-columns:1fr;
+    padding-top:55px;
+    gap:40px;
+    min-height:0;
+  }
+  .heroart {
+    height:420px;
+  }
+  .section {
+    padding-top:75px;
+    padding-bottom:75px;
+  }
+  .gallery {
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+  }
+  .aboutgrid,.contactgrid {
+    grid-template-columns:1fr;
+    gap:35px;
+  }
+  .sectionhead {
+    display:block;
+  }
+  .piece h3 {
+    font-size:20px;
+  }
+}
+
+@media(max-width:440px) {
+  .gallery {
+    grid-template-columns:1fr;
+  }
+  .heroart {
+    height:360px;
+  }
+}
 
 /* Galerie Chico — blanc et couleurs vives */
-:root{--ink:#151515;--muted:#5e5e5e;--paper:#fff;--line:#e5e5e5;--accent:#fa3154}
-body{background:#fff}header{background:#ffffffed;border-bottom:2px solid #161616}.brand{font-family:Arial,Helvetica,sans-serif;font-size:20px;font-weight:900;letter-spacing:-.055em}.brand::before{content:"●";color:#f52e54;margin-right:9px}.navlinks{font-weight:800;letter-spacing:.045em}.navlinks a:last-child{background:#fa3154;color:white;padding:12px 17px}.navlinks a:last-child:hover{background:#111;color:white}
-.hero{min-height:690px;gap:5%}.eyebrow{color:#f02a50;font-weight:900;letter-spacing:.14em}.hero h1{font-family:Arial,Helvetica,sans-serif;font-weight:900;letter-spacing:-.085em;font-size:clamp(68px,8.5vw,132px);line-height:.9}.hero h1::after{content:"✳";color:#f6c900;font-size:.42em;vertical-align:top;margin-left:.08em}.lead{color:#555}.cta{background:#171717;color:white;border:0;padding:18px 23px;font-weight:800;letter-spacing:.07em;transition:transform .2s,background .2s}.cta:hover{background:#fa3154;transform:translateY(-3px)}.heroart{background:#ffe51b;position:relative;padding:26px;transform:rotate(2deg);box-shadow:18px 18px 0 #fa3154}.heroart::before{content:"ART VIVANT";position:absolute;right:-14px;top:18px;background:#1647ff;color:#fff;padding:12px 16px;font-size:12px;font-weight:900;letter-spacing:.1em;z-index:2;transform:rotate(8deg)}.artwork{background:linear-gradient(145deg,#ff653b 0%,#ff315b 48%,#681cc5 100%)}.artwork:before{background:#ffe426;box-shadow:30px 45px 0 #1647ff}.artwork:after{background:#11cda5}
-h2{font-family:Arial,Helvetica,sans-serif;font-weight:900;letter-spacing:-.06em}.sectionhead h2{max-width:620px}.sectionhead::after{content:"✦";color:#1647ff;font-size:46px}.piece .frame{background:#f3f3f3;padding:13px}.piece:nth-child(2) .frame{background:#e9e6ff}.piece:nth-child(3) .frame{background:#fff0a8}.piece h3{font-family:Arial,Helvetica,sans-serif;font-weight:850;letter-spacing:-.04em}.piece:hover h3{color:#fa3154}.painting.a{background:radial-gradient(ellipse at 35% 38%,#ffed33 0 16%,transparent 17%),radial-gradient(ellipse at 62% 66%,#1647ff 0 27%,transparent 28%),linear-gradient(135deg,#ff3b56,#ff9b43)}.painting.b{background:radial-gradient(ellipse at 50% 45%,#ff67c8 0 29%,transparent 30%),linear-gradient(30deg,#1827b5 0 35%,#ffdf24 36% 60%,#ff4b37 61%)}.painting.c{background:radial-gradient(ellipse at 70% 35%,#ffdc2b 0 24%,transparent 25%),linear-gradient(145deg,#a1f0c6,#176aee 60%,#ff4c80)}
-.about{background:#f6f6f6;border-top:1px solid #e9e9e9;border-bottom:1px solid #e9e9e9}.aboutvisual{background:linear-gradient(140deg,#1647ff 0 35%,#fa3154 36% 55%,#ffe11b 56%);font-family:Arial,Helvetica,sans-serif;font-weight:900;font-style:normal;font-size:clamp(24px,4vw,48px);line-height:1.05;letter-spacing:-.06em}.about p{color:#444}.field input,.field textarea{border-bottom:2px solid #191919}.field input:focus,.field textarea:focus{border-color:#1647ff}.submit{background:#1647ff;font-weight:900;font-size:12px}.submit:hover{background:#fa3154}.modalinner{background:#fff}.modal h3{font-family:Arial,Helvetica,sans-serif;font-weight:900}footer{border-top:3px solid #151515}footer::after{content:"●";color:#fa3154;font-size:16px}
-@media(max-width:760px){.hero{min-height:0}.heroart{transform:rotate(1deg);box-shadow:10px 10px 0 #fa3154}.navlinks a:last-child{padding:9px}.sectionhead::after{display:none}}
-</style>
-</head>
-<body>
-<header><nav class="nav"><a class="brand" href="#accueil" id="brand">GALERIE CHICO</a><div class="navlinks"><a href="#galerie">Galerie</a><a href="#apropos">À propos</a><a href="#contact">Contact</a></div></nav></header>
-<main><section class="hero wrap" id="accueil"><div><div class="eyebrow">Galerie indépendante · Art original</div><h1>L’art à<br>ressentir.</h1><p class="lead">Une rencontre entre formes, couleurs et histoires. Explorez les œuvres et découvrez l’univers de chaque création.</p><a class="cta" href="#galerie">Découvrir la galerie <span>↗</span></a></div><div class="heroart"><div class="artwork" role="img" aria-label="Illustration abstraite temporaire"></div></div></section>
-<section class="section wrap" id="galerie"><div class="sectionhead"><div><div class="eyebrow">Collection</div><h2>Œuvres choisies</h2></div><p class="small">Chaque œuvre raconte une histoire.<br>Cliquez pour la découvrir.</p></div><div class="gallery" id="gallery"></div><p class="note">Les visuels présentés sont provisoires. Remplacez-les par les photos de vos œuvres avant la mise en ligne.</p></section>
-<section class="section about" id="apropos"><div class="wrap aboutgrid"><div class="aboutvisual">création & expression</div><div><div class="eyebrow">L’artiste</div><h2>Un regard<br>singulier.</h2><p>Cet espace est consacré à ma démarche artistique, à mes inspirations et aux histoires qui prennent vie dans chaque œuvre.</p><p>Entre couleurs, textures et formes, chaque création invite à porter un nouveau regard.</p><a class="cta" href="#contact">Échanger autour d’une œuvre ↗</a></div></div></section>
-<section class="section wrap" id="contact"><div class="contactgrid"><div><div class="eyebrow">Contato</div><h2>Parlons<br>ensemble.</h2><p class="lead">Une œuvre vous plaît ? Vous souhaitez connaître sa disponibilité ou poser une question ? Écrivez-moi.</p><p class="small">Instagram: <a class="textlink" id="instagram" href="https://instagram.com/" target="_blank" rel="noopener">Profil à ajouter ↗</a></p></div><form class="contactform" id="contactForm"><div class="field"><label for="name">Votre nom</label><input id="name" required autocomplete="name" placeholder="Comment vous appelez-vous ?"></div><div class="field"><label for="email">Votre adresse e-mail</label><input id="email" type="email" required autocomplete="email" placeholder="vous@exemple.fr"></div><div class="field"><label for="subject">Œuvre souhaitée (facultatif)</label><input id="subject" placeholder="Titre de l’œuvre"></div><div class="field"><label for="message">Votre message</label><textarea id="message" rows="4" required placeholder="Écrivez votre message…"></textarea></div><button class="submit" type="submit">Préparer le message ↗</button><p class="small" id="formInfo">Le formulaire ouvre votre messagerie avec un message prérempli. Renseignez votre adresse e-mail avant la publication.</p></form></div></section></main>
-<footer><span>© <span id="year"></span> <span id="footerName">Galerie Chico</span> · Tous droits réservés.</span><span>Créé avec passion et couleur.</span></footer>
-<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modalinner"><button class="close" aria-label="Fermer" id="closeModal">×</button><div id="modalPainting" class="painting a"></div><h3 id="modalTitle"></h3><p id="modalDetails"></p><a class="cta" id="askArtwork" href="#contact">Se renseigner sur cette œuvre ↗</a></div></div>
-<script>
-// À PERSONNALISER avant publication :
-const CONFIG = { artistName: 'GALERIE CHICO', contactEmail: 'VOTRE-EMAIL@EXEMPLE.FR', instagramUrl: 'https://instagram.com/VOTRE_PROFIL' };
-// Remplacez les illustrations par vos photos avec image: 'imagens/minha-obra.jpg' em cada item.
+:root {
+  --ink:#151515;
+  --muted:#5e5e5e;
+  --paper:#fff;
+  --line:#e5e5e5;
+  --accent:#fa3154;
+}
+
+body {
+  background:#fff;
+}
+
+header {
+  background:#ffffffed;
+  border-bottom:2px solid #161616;
+}
+
+.brand {
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:20px;
+  font-weight:900;
+  letter-spacing:-.055em;
+}
+
+.brand::before {
+  content:"●";
+  color:#f52e54;
+  margin-right:9px;
+}
+
+.navlinks {
+  font-weight:800;
+  letter-spacing:.045em;
+}
+
+.navlinks a:last-child {
+  background:#fa3154;
+  color:white;
+  padding:12px 17px;
+}
+
+.navlinks a:last-child:hover {
+  background:#111;
+  color:white;
+}
+
+.hero {
+  min-height:690px;
+  gap:5%;
+}
+
+.eyebrow {
+  color:#f02a50;
+  font-weight:900;
+  letter-spacing:.14em;
+}
+
+
+.hero h1 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 900;
+  letter-spacing: -0.065em;
+  font-size: clamp(40px, 5vw, 80px);
+  line-height: 1;
+}
+
+
+.hero h1::after {
+  content:"✳";
+  color:#f6c900;
+  font-size:.42em;
+  vertical-align:top;
+  margin-left:.08em;
+}
+
+.lead {
+  color:#555;
+}
+
+.cta {
+  background:#171717;
+  color:white;
+  border:0;
+  padding:18px 23px;
+  font-weight:800;
+  letter-spacing:.07em;
+  transition:transform .2s,background .2s;
+}
+
+.cta:hover {
+  background:#fa3154;
+  transform:translateY(-3px);
+}
+
+.heroart {
+  background:#ffe51b;
+  position:relative;
+  padding:26px;
+  transform:rotate(2deg);
+  box-shadow:18px 18px 0 #fa3154;
+}
+
+.heroart::before {
+  content:"ART VIVANT";
+  position:absolute;
+  right:-14px;
+  top:18px;
+  background:#1647ff;
+  color:#fff;
+  padding:12px 16px;
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:.1em;
+  z-index:2;
+  transform:rotate(8deg);
+}
+
+.artwork {
+  background:linear-gradient(145deg,#ff653b 0%,#ff315b 48%,#681cc5 100%);
+}
+
+.artwork:before {
+  background:#ffe426;
+  box-shadow:30px 45px 0 #1647ff;
+}
+
+.artwork:after {
+  background:#11cda5;
+}
+
+h2 {
+  font-family:Arial,Helvetica,sans-serif;
+  font-weight:900;
+  letter-spacing:-.06em;
+}
+
+.sectionhead h2 {
+  max-width:620px;
+}
+
+.sectionhead::after {
+  content:"✦";
+  color:#1647ff;
+  font-size:46px;
+}
+
+.piece .frame {
+  background:#f3f3f3;
+  padding:13px;
+}
+
+.piece:nth-child(2) .frame {
+  background:#e9e6ff;
+}
+
+.piece:nth-child(3) .frame {
+  background:#fff0a8;
+}
+
+.piece h3 {
+  font-family:Arial,Helvetica,sans-serif;
+  font-weight:850;
+  letter-spacing:-.04em;
+}
+
+.piece:hover h3 {
+  color:#fa3154;
+}
+
+.painting.a {
+  background:radial-gradient(ellipse at 35% 38%,#ffed33 0 16%,transparent 17%),radial-gradient(ellipse at 62% 66%,#1647ff 0 27%,transparent 28%),linear-gradient(135deg,#ff3b56,#ff9b43);
+}
+
+.painting.b {
+  background:radial-gradient(ellipse at 50% 45%,#ff67c8 0 29%,transparent 30%),linear-gradient(30deg,#1827b5 0 35%,#ffdf24 36% 60%,#ff4b37 61%);
+}
+
+.painting.c {
+  background:radial-gradient(ellipse at 70% 35%,#ffdc2b 0 24%,transparent 25%),linear-gradient(145deg,#a1f0c6,#176aee 60%,#ff4c80);
+}
+
+.about {
+  background:#f6f6f6;
+  border-top:1px solid #e9e9e9;
+  border-bottom:1px solid #e9e9e9;
+}
+
+.aboutvisual {
+  background:linear-gradient(140deg,#1647ff 0 35%,#fa3154 36% 55%,#ffe11b 56%);
+  font-family:Arial,Helvetica,sans-serif;
+  font-weight:900;
+  font-style:normal;
+  font-size:clamp(24px,4vw,48px);
+  line-height:1.05;
+  letter-spacing:-.06em;
+}
+
+.about p {
+  color:#444;
+}
+
+.field input,.field textarea {
+  border-bottom:2px solid #191919;
+}
+
+.field input:focus,.field textarea:focus {
+  border-color:#1647ff;
+}
+
+.submit {
+  background:#1647ff;
+  font-weight:900;
+  font-size:12px;
+}
+
+.submit:hover {
+  background:#fa3154;
+}
+
+.modalinner {
+  background:#fff;
+}
+
+.modal h3 {
+  font-family:Arial,Helvetica,sans-serif;
+  font-weight:900;
+}
+
+footer {
+  border-top:3px solid #151515;
+}
+
+footer::after {
+  content:"●";
+  color:#fa3154;
+  font-size:16px;
+}
+
+@media(max-width:760px) {
+  .hero {
+    min-height:0;
+  }
+  .heroart {
+    transform:rotate(1deg);
+    box-shadow:10px 10px 0 #fa3154;
+  }
+  .navlinks a:last-child {
+    padding:9px;
+  }
+  .sectionhead::after {
+    display:none;
+  }
+}
+  </style>
+ </head>
+ <body>
+  <header>
+   <nav class="nav">
+    <a class="brand" href="#accueil" id="brand">
+     GALERIE CHICO
+    </a>
+    <div class="navlinks">
+     <a href="#galerie">
+      Galerie
+     </a>
+     <a href="#apropos">
+      À propos
+     </a>
+     <a href="#contact">
+      Contact
+     </a>
+    </div>
+   </nav>
+  </header>
+  <main>
+   <section class="hero wrap" id="accueil">
+    <div>
+     <div class="eyebrow">
+      Galerie indépendante · Art original
+     </div>
+     
+	<h1>
+	  L’art des<br>
+	  contrastes.
+	</h1>
+
+	<p class="lead">
+	  Entre ombre et lumière, rêve et réalité,
+	  beauté et contradiction. Une exploration
+	  des dualités du monde à travers l’art.
+	</p>
+
+	<a class="cta" href="#galerie">
+	  Découvrir les œuvres
+	  <span>↗</span>
+	</a>
+
+    </div>
+    <div class="heroart">
+     <div aria-label="Illustration abstraite temporaire" class="artwork" role="img">
+     </div>
+    </div>
+   </section>
+   <section class="section wrap" id="galerie">
+    <div class="sectionhead">
+     <div>
+      <div class="eyebrow">
+       Collection
+      </div>
+      <h2>
+       Œuvres choisies
+      </h2>
+     </div>
+     <p class="small">
+      Chaque œuvre raconte une histoire.
+      <br/>
+      Cliquez pour la découvrir.
+     </p>
+    </div>
+    <div class="gallery" id="gallery">
+    </div>
+    <p class="note">
+     Les visuels présentés sont provisoires. Remplacez-les par les photos de vos œuvres avant la mise en ligne.
+    </p>
+   </section>
+   <section class="section about" id="apropos">
+    <div class="wrap aboutgrid">
+     <div class="aboutvisual">
+      création &amp; expression
+     </div>
+     <div>
+      <div class="eyebrow">
+       L’artiste
+      </div>
+      <h2>
+       Un regard
+       <br/>
+       singulier.
+      </h2>
+      <p>
+       Cet espace est consacré à ma démarche artistique, à mes inspirations et aux histoires qui prennent vie dans chaque œuvre.
+      </p>
+      <p>
+       Entre couleurs, textures et formes, chaque création invite à porter un nouveau regard.
+      </p>
+      <a class="cta" href="#contact">
+       Échanger autour d’une œuvre ↗
+      </a>
+     </div>
+    </div>
+   </section>
+   <section class="section wrap" id="contact">
+    <div class="contactgrid">
+     <div>
+      <div class="eyebrow">
+       Contato
+      </div>
+      <h2>
+       Parlons
+       <br/>
+       ensemble.
+      </h2>
+      <p class="lead">
+       Une œuvre vous plaît ? Vous souhaitez connaître sa disponibilité ou poser une question ? Écrivez-moi.
+      </p>
+      <p class="small">
+       Instagram:
+       <a class="textlink" href="https://instagram.com/" id="instagram" rel="noopener" target="_blank">
+        Profil à ajouter ↗
+       </a>
+      </p>
+     </div>
+     <form class="contactform" id="contactForm">
+      <div class="field">
+       <label for="name">
+        Votre nom
+       </label>
+       <input autocomplete="name" id="name" placeholder="Comment vous appelez-vous ?" required=""/>
+      </div>
+      <div class="field">
+       <label for="email">
+        Votre adresse e-mail
+       </label>
+       <input autocomplete="email" id="email" placeholder="vous@exemple.fr" required="" type="email"/>
+      </div>
+      <div class="field">
+       <label for="subject">
+        Œuvre souhaitée (facultatif)
+       </label>
+       <input id="subject" placeholder="Titre de l’œuvre"/>
+      </div>
+      <div class="field">
+       <label for="message">
+        Votre message
+       </label>
+       <textarea id="message" placeholder="Écrivez votre message…" required="" rows="4"></textarea>
+      </div>
+      <button class="submit" type="submit">
+       Préparer le message ↗
+      </button>
+      <p class="small" id="formInfo">
+       Le formulaire ouvre votre messagerie avec un message prérempli. Renseignez votre adresse e-mail avant la publication.
+      </p>
+     </form>
+    </div>
+   </section>
+  </main>
+  <footer>
+   <span>
+    ©
+    <span id="year">
+    </span>
+    <span id="footerName">
+     Galerie Chico
+    </span>
+    · Tous droits réservés.
+   </span>
+   <span>
+    Créé avec passion et couleur.
+   </span>
+  </footer>
+  <div aria-labelledby="modalTitle" aria-modal="true" class="modal" id="modal" role="dialog">
+   <div class="modalinner">
+    <button aria-label="Fermer" class="close" id="closeModal">
+     ×
+    </button>
+    <div class="painting a" id="modalPainting">
+    </div>
+    <h3 id="modalTitle">
+    </h3>
+    <p id="modalDetails">
+    </p>
+    <a class="cta" href="#contact" id="askArtwork">
+     Se renseigner sur cette œuvre ↗
+    </a>
+   </div>
+  </div>
+  <script>
+   // ============================================================
+// CONFIGURAÇÃO GERAL
+// ============================================================
+const CONFIG = {
+  artistName: 'GALERIE CHICO',
+  contactEmail: 'VOTRE-EMAIL@EXEMPLE.FR',
+  instagramUrl: 'https://instagram.com/VOTRE_PROFIL'
+};
+
+// ============================================================
+// OBRAS DA GALERIA — EDITE AQUI PARA ADICIONAR NOVAS PINTURAS
+// A imagem deve estar na mesma pasta do index.html, ou use
+// o caminho da subpasta, por exemplo: 'images/Desilusion.jpg'.
+// ============================================================
 const WORKS = [
- {title:'A Vida de Bob — I',details:'Collection A Vida de Bob · Œuvre 01',style:'a',image:'Desilusion.jpg'},
- {title:'A Vida de Bob — II',details:'Collection A Vida de Bob · Œuvre 02',style:'b',image:''},
- {title:'A Vida de Bob — III',details:'Collection A Vida de Bob · Œuvre 03',style:'c',image:''}
+  {
+    title: 'A Vida de Bob — I',
+    details: 'Collection A Vida de Bob · Œuvre 01',
+    style: 'a',
+    image: 'Desilusion.jpg'
+  },
+  {
+    title: 'A Vida de Bob — II',
+    details: 'Collection A Vida de Bob · Œuvre 02',
+    style: 'b',
+    image: ''
+  },
+  {
+    title: 'A Vida de Bob — III',
+    details: 'Collection A Vida de Bob · Œuvre 03',
+    style: 'c',
+    image: ''
+  }
 ];
-const $=id=>document.getElementById(id);$('brand').textContent=CONFIG.artistName;$('footerName').textContent=CONFIG.artistName;$('year').textContent=new Date().getFullYear();$('instagram').href=CONFIG.instagramUrl;$('instagram').textContent=CONFIG.instagramUrl.includes('VOTRE_PROFIL')?'Profil à ajouter ↗':'Voir Instagram ↗';
-$('gallery').innerHTML=WORKS.map((w,i)=>`<button class="piece" data-index="${i}" aria-label="Voir ${w.title}"><div class="frame"><div class="painting ${w.style}" ${w.image?`style="background:center/cover url('${w.image.replaceAll("'",'')}')"`:''}></div></div><h3>${w.title}</h3><p class="small">${w.details}</p></button>`).join('');
-function closeModal(){$('modal').classList.remove('open')};document.querySelectorAll('.piece').forEach(el=>el.addEventListener('click',()=>{const w=WORKS[+el.dataset.index];$('modalTitle').textContent=w.title;$('modalDetails').textContent=w.details;$('modalPainting').className='painting '+w.style;$('modalPainting').style.background=w.image?`center / cover url("${w.image}")`:'';$('askArtwork').onclick=()=>{$('subject').value=w.title;closeModal()};$('modal').classList.add('open')}));$('closeModal').onclick=closeModal;$('modal').onclick=e=>{if(e.target===$('modal'))closeModal()};document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
-$('contactForm').addEventListener('submit',e=>{e.preventDefault();if(CONFIG.contactEmail.includes('EXEMPLE.FR')){ $('formInfo').textContent='Avant de continuer, renseignez votre adresse e-mail dans CONFIG.contactEmail du fichier index.html.';return;}const name=$('name').value,email=$('email').value,subject=$('subject').value,msg=$('message').value;const title=subject?'Renseignements sur l’œuvre : '+subject:'Contact via la galerie';const body=`Bonjour !\n\n${msg}\n\nŒuvre : ${subject||'Non précisée'}\nNom : ${name}\nE-mail : ${email}`;window.location.href=`mailto:${CONFIG.contactEmail}?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(body)}`});
-</script>
-</body></html>
+
+// Atalho para localizar elementos HTML pelo ID.
+const $ = (id) => document.getElementById(id);
+
+// Preencher informações gerais do site.
+$('brand').textContent = CONFIG.artistName;
+$('footerName').textContent = CONFIG.artistName;
+$('year').textContent = new Date().getFullYear();
+$('instagram').href = CONFIG.instagramUrl;
+$('instagram').textContent = CONFIG.instagramUrl.includes('VOTRE_PROFIL')
+  ? 'Profil à ajouter ↗'
+  : 'Voir Instagram ↗';
+
+// Criar os cartões das obras.
+$('gallery').innerHTML = WORKS.map((work, index) => `
+  <button class="piece" data-index="${index}" aria-label="Voir ${work.title}">
+    <div class="frame">
+      <div
+        class="painting ${work.style}"
+        ${work.image
+          ? `style="background:center/cover url('${work.image.replaceAll("'", '')}')"`
+          : ''}
+      ></div>
+    </div>
+    <h3>${work.title}</h3>
+    <p class="small">${work.details}</p>
+  </button>
+`).join('');
+
+// Janela de detalhes de uma obra.
+function closeModal() {
+  $('modal').classList.remove('open');
+}
+
+document.querySelectorAll('.piece').forEach((element) => {
+  element.addEventListener('click', () => {
+    const work = WORKS[Number(element.dataset.index)];
+
+    $('modalTitle').textContent = work.title;
+    $('modalDetails').textContent = work.details;
+    $('modalPainting').className = 'painting ' + work.style;
+    $('modalPainting').style.background = work.image
+      ? `center / cover url("${work.image}")`
+      : '';
+
+    $('askArtwork').onclick = () => {
+      $('subject').value = work.title;
+      closeModal();
+    };
+
+    $('modal').classList.add('open');
+  });
+});
+
+$('closeModal').onclick = closeModal;
+$('modal').onclick = (event) => {
+  if (event.target === $('modal')) closeModal();
+};
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') closeModal();
+});
+
+// Formulário de contato: abre o aplicativo de e-mail do visitante.
+$('contactForm').addEventListener('submit', (event) => {
+  event.preventDefault();
+
+  if (CONFIG.contactEmail.includes('EXEMPLE.FR')) {
+    $('formInfo').textContent =
+      'Avant de continuer, renseignez votre adresse e-mail dans CONFIG.contactEmail du fichier index.html.';
+    return;
+  }
+
+  const name = $('name').value;
+  const email = $('email').value;
+  const subject = $('subject').value;
+  const message = $('message').value;
+
+  const title = subject
+    ? 'Renseignements sur l’œuvre : ' + subject
+    : 'Contact via la galerie';
+
+  const body = `Bonjour !\n\n${message}\n\nŒuvre : ${subject || 'Non précisée'}\nNom : ${name}\nE-mail : ${email}`;
+
+  window.location.href =
+    `mailto:${CONFIG.contactEmail}?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(body)}`;
+});
+  </script>
+ </body>
+</html>
+
