@@ -713,6 +713,54 @@ footer::after {
   background-position: center !important;
   background-repeat: no-repeat !important;
 }
+
+	  
+/* MENU SUSPENSO DA GALERIA */
+
+.dropdown {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-toggle {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 12px 0;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 190px;
+  background: white;
+  border: 1px solid #e5e5e5;
+  box-shadow: 0 10px 25px #00000015;
+  z-index: 100;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 15px 18px;
+  font-size: 12px;
+  font-weight: 800;
+  color: #151515;
+  text-decoration: none;
+}
+
+.dropdown-menu a:hover {
+  background: #fa3154;
+  color: white;
+}
+
+.dropdown:hover .dropdown-menu,
+.dropdown:focus-within .dropdown-menu {
+  display: block;
+}
+
 	  
   </style>
  </head>
@@ -723,9 +771,23 @@ footer::after {
      GALERIE CHICO
     </a>
     <div class="navlinks">
-     <a href="#galerie">
-      Galerie
-     </a>
+		
+<div class="dropdown">
+  <a href="#galerie" class="dropdown-toggle">
+    Galerie <span>⌄</span>
+  </a>
+
+  <div class="dropdown-menu">
+    <a href="vida-de-bob.html">
+      A Vida de Bob
+    </a>
+
+    <a href="dualidade.html">
+      Dualidade
+    </a>
+  </div>
+</div>		
+		
      <a href="#apropos">
       À propos
      </a>
