@@ -696,6 +696,24 @@ footer::after {
     display:none;
   }
 }
+	  
+/* Exibir as pinturas inteiras na galeria */
+.piece .frame {
+  aspect-ratio: 4 / 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+}
+
+.piece .painting {
+  width: 100%;
+  height: 100%;
+  background-size: contain !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+	  
   </style>
  </head>
  <body>
