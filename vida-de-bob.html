@@ -164,7 +164,7 @@
 
     .frame {
       aspect-ratio: 4 / 5;
-      background: #f3f3f3;
+      background: #ff0000;
       padding: 14px;
       display: flex;
       align-items: center;
@@ -172,12 +172,20 @@
     }
 
     .piece:nth-child(3n+2) .frame {
-      background: #e9e6ff;
+      background: #00ff00;
     }
 
     .piece:nth-child(3n+3) .frame {
-      background: #fff0a8;
+      background: #0000ff;
     }
+
+    /* Paleta RGB pura, repetida a cada seis obras */
+    .piece:nth-child(6n+1) .frame { background: #ff0000; } /* vermelho */
+    .piece:nth-child(6n+2) .frame { background: #00ff00; } /* verde */
+    .piece:nth-child(6n+3) .frame { background: #0000ff; } /* azul */
+    .piece:nth-child(6n+4) .frame { background: #00ffff; } /* ciano */
+    .piece:nth-child(6n+5) .frame { background: #ff00ff; } /* magenta */
+    .piece:nth-child(6n+6) .frame { background: #ffff00; } /* amarelo */
 
     .frame img {
       width: 100%;
@@ -264,7 +272,13 @@
     .sketch-heading { font-size: clamp(26px, 4vw, 40px); font-weight: 900; letter-spacing: -.05em; margin: 0 0 32px; }
     .sketch-gallery { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:35px 28px; }
     .sketch-item { border:0; padding:0; background:none; text-align:center; cursor:pointer; color:inherit; min-width:0; }
-    .sketch-frame { aspect-ratio:4/5; background:#f3f3f3; padding:14px; display:flex; align-items:center; justify-content:center; }
+    .sketch-frame { aspect-ratio:4/5; background:#ff0000; padding:14px; display:flex; align-items:center; justify-content:center; }
+    .sketch-item:nth-child(6n+1) .sketch-frame { background:#ff0000; }
+    .sketch-item:nth-child(6n+2) .sketch-frame { background:#00ff00; }
+    .sketch-item:nth-child(6n+3) .sketch-frame { background:#0000ff; }
+    .sketch-item:nth-child(6n+4) .sketch-frame { background:#00ffff; }
+    .sketch-item:nth-child(6n+5) .sketch-frame { background:#ff00ff; }
+    .sketch-item:nth-child(6n+6) .sketch-frame { background:#ffff00; }
     .sketch-frame img { width:100%; height:100%; object-fit:contain; display:block; transition:transform .25s; }
     .sketch-item:hover img { transform:scale(1.025); }
     .sketch-item h3 { font-size:13px; font-weight:600; margin:15px 0 0; line-height:1.35; }
