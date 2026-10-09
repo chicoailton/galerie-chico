@@ -536,8 +536,8 @@
 
     // ADICIONE OS SKETCHES AQUI. Substitua pelos nomes reais dos arquivos.
     const SKETCHES = [
-      { title: 'Bob feels free - Sketch 1', image: 'BobFeelsFree_sketch1.jpg' },
-       { title: 'Bob feels free - Sketch 2', image: 'BobFeelsFree_sketch2.jpg' },
+      { title: 'Bob feels free - Sketch 1', image: 'BobFeelsFree_sketch1.jpg', status: 'disponible' },
+       { title: 'Bob feels free - Sketch 2', image: 'BobFeelsFree_sketch2.jpg', status: 'disponible' },
     ];
 
     /* FUNÇÕES */
@@ -674,7 +674,15 @@
       const title = document.createElement('h3');
       title.textContent = sketch.title;
       frame.appendChild(img);
-      button.append(frame, title);
+      const status = document.createElement('div');
+      status.className = 'artwork-status';
+      const dot = document.createElement('span');
+      dot.className = 'status-dot ' + (sketch.status || 'disponible');
+      dot.setAttribute('aria-hidden', 'true');
+      const statusText = document.createElement('span');
+      statusText.textContent = getStatusLabel(sketch.status);
+      status.append(dot, statusText);
+      button.append(frame, title, status);
       button.addEventListener('click', () => {
         modalImage.src = sketch.image;
         modalImage.alt = sketch.title;
