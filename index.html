@@ -705,24 +705,43 @@ footer::after {
 .dropdown:hover .dropdown-menu, .dropdown:focus-within .dropdown-menu { display:block; }
 @media(max-width:700px) { .navlinks { gap:10px; } .dropdown-menu { left:auto; right:0; } }
 
+/* Foto de destaque: moldura acompanha a proporção da obra */
 .heroart {
-  height: 540px;
-  padding: 20px;
+  width: min(100%, 440px);
+  height: auto;
+  padding: 16px;
   background: #ffe51b;
   position: relative;
+  justify-self: center;
+  display: block;
+  overflow: visible;
   transform: rotate(2deg);
   box-shadow: 18px 18px 0 #fa3154;
-  overflow: hidden;
 }
-
 .hero-photo {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
   display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
 }
-   
-  </style>
+.heroart::before {
+  content: "LE PHÉNIX";
+  position: absolute;
+  top: 18px;
+  right: -14px;
+  background: #ffe51b;
+  color: #151515;
+  padding: 12px 16px;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: .1em;
+  z-index: 2;
+  transform: rotate(8deg);
+}
+@media (max-width: 760px) {
+  .heroart { width: min(85%, 440px); box-shadow: 10px 10px 0 #fa3154; }
+}
+</style>
  </head>
  <body>
   <header>
@@ -776,9 +795,7 @@ footer::after {
    <div class="heroart">
   <img src="Phenix.jpg" alt="Œuvre de Galerie Chico" class="hero-photo">
 </div>
-     
-    </div>
-   </section>
+    </section>
    <section class="section wrap" id="galerie">
     <div class="sectionhead">
      <div>
@@ -1038,4 +1055,3 @@ $('contactForm').addEventListener('submit', (event) => {
   </script>
  </body>
 </html>
-
