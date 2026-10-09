@@ -80,12 +80,21 @@
     </div>
   </div>
   <script>
-    // AJOUTEZ VOS ŒUVRES ICI. Placez les fichiers image dans le même dossier que cette page.
-    // Pour ajouter une œuvre, copiez un objet et renseignez son titre, ses détails et son image.
+    // AJOUTER OU MODIFIER LES ŒUVRES ICI.
+    // Envoyez vos images dans le même dossier GitHub que vida-de-bob.html.
+    // Laissez image: '' pour afficher un emplacement « Œuvre à venir ».
     const WORKS = [
-      { title: 'A Vida de Bob — I', details: 'Collection A Vida de Bob · Œuvre 01', image: 'Desilusion.jpg' },
-      // Exemple : { title: 'A Vida de Bob — II', details: 'Collection A Vida de Bob · Œuvre 02', image: 'bob-02.webp' },
+      { title: 'A Vida de Bob — I', description: '', year: '', technique: '', dimensions: '', image: 'Desilusion.jpg' },
+      { title: 'A Vida de Bob — II', description: '', year: '', technique: '', dimensions: '', image: '' },
+      { title: 'A Vida de Bob — III', description: '', year: '', technique: '', dimensions: '', image: '' },
+      { title: 'A Vida de Bob — IV', description: '', year: '', technique: '', dimensions: '', image: '' },
+      { title: 'A Vida de Bob — V', description: '', year: '', technique: '', dimensions: '', image: '' },
+      { title: 'A Vida de Bob — VI', description: '', year: '', technique: '', dimensions: '', image: '' }
     ];
+
+    function workDetails(work) {
+      return [work.year, work.technique, work.dimensions].filter(Boolean).join(' · ');
+    }
 
     const gallery = document.getElementById('gallery');
     const modal = document.getElementById('modal');
@@ -98,21 +107,29 @@
       button.className = 'piece';
       const frame = document.createElement('div');
       frame.className = 'frame';
-      const img = document.createElement('img');
-      img.src = work.image;
-      img.alt = work.title;
-      img.loading = 'lazy';
-      frame.appendChild(img);
+      if (work.image) {
+        const img = document.createElement('img');
+        img.src = work.image;
+        img.alt = work.title;
+        img.loading = 'lazy';
+        frame.appendChild(img);
+      } else {
+        const placeholder = document.createElement('div');
+        placeholder.className = 'placeholder';
+        placeholder.textContent = 'Œuvre à venir';
+        frame.appendChild(placeholder);
+        button.disabled = true;
+      }
       const title = document.createElement('h2');
       title.textContent = work.title;
       const details = document.createElement('p');
-      details.textContent = work.details;
+      details.textContent = workDetails(work) || (work.image ? 'Collection A Vida de Bob' : 'À découvrir prochainement');
       button.append(frame, title, details);
-      button.addEventListener('click', () => {
+      if (work.image) button.addEventListener('click', () => {
         modalImage.src = work.image;
         modalImage.alt = work.title;
         document.getElementById('modalTitle').textContent = work.title;
-        document.getElementById('modalDetails').textContent = work.details;
+        document.getElementById('modalDetails').textContent = [work.description, workDetails(work)].filter(Boolean).join(' — ');
         modal.classList.add('open');
         modal.setAttribute('aria-hidden', 'false');
       });
