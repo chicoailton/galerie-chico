@@ -38,6 +38,17 @@
     .piece:nth-child(6n+4) .frame { background:#00FFFF; }
     .piece:nth-child(6n+5) .frame { background:#FF00FF; }
     .piece:nth-child(6n+6) .frame { background:#FFFF00; }
+    .sketches-section { padding-bottom:110px; }
+    .sketches-heading { border-top:3px solid #151515; padding-top:45px; margin-bottom:35px; }
+    .sketches-heading h2 { font-size:clamp(40px,6vw,75px); line-height:1; letter-spacing:-.06em; margin:12px 0 15px; }
+    .sketches-heading p { color:#555; font-size:15px; line-height:1.7; }
+    .sketch-gallery { padding-bottom:0; }
+    .sketch-gallery .piece:nth-child(6n+1) .frame { background:#FF0000; }
+    .sketch-gallery .piece:nth-child(6n+2) .frame { background:#00FF00; }
+    .sketch-gallery .piece:nth-child(6n+3) .frame { background:#0000FF; }
+    .sketch-gallery .piece:nth-child(6n+4) .frame { background:#00FFFF; }
+    .sketch-gallery .piece:nth-child(6n+5) .frame { background:#FF00FF; }
+    .sketch-gallery .piece:nth-child(6n+6) .frame { background:#FFFF00; }
     .frame img { width:100%; height:100%; object-fit:contain; display:block; transition:transform .25s; }
     .piece:hover img { transform:scale(1.025); }
     .piece h2 { font-size:13px; font-weight:600; letter-spacing:-.02em; text-align:center; line-height:1.35; margin:15px 0 5px; }
@@ -83,6 +94,14 @@
       <a class="back" href="index.html">← Retour à l’accueil</a>
     </section>
     <section class="gallery wrap" id="gallery" aria-label="Œuvres de la collection"></section>
+    <section class="sketches-section wrap" id="sketches" aria-labelledby="sketches-title">
+      <div class="sketches-heading">
+        <div class="eyebrow">Collection · Dualité</div>
+        <h2 id="sketches-title">Sketches<span style="color:#1647ff">✳</span></h2>
+        <p>Découvrez les esquisses et les recherches préparatoires de la collection.</p>
+      </div>
+      <div class="gallery sketch-gallery" id="sketchGallery" aria-label="Esquisses de la collection"></div>
+    </section>
   </main>
   <footer class="wrap">© <span id="year"></span> Galerie Chico · Tous droits réservés.</footer>
   <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
@@ -234,7 +253,15 @@
       
     ];
 
+    // ADICIONE SEUS SKETCHES AQUI.
+    // Exemplo: { title:'Sketch 1', image:'Sketch1.jpg', year:'2026',
+    // technique:'Crayon sur papier', dimensions:'30 × 40 cm',
+    // description:'', status:'disponible' }
+    const SKETCHES = [
+    ];
+
     const gallery = document.getElementById('gallery');
+    const sketchGallery = document.getElementById('sketchGallery');
     const modal = document.getElementById('modal');
     const modalImage = document.getElementById('modalImage');
     const modalTitle = document.getElementById('modalTitle');
@@ -285,6 +312,52 @@
       note.textContent = 'Les œuvres de cette collection seront bientôt présentées ici.';
       gallery.appendChild(note);
     }
+
+    function renderSketches() {
+      if (SKETCHES.length === 0) {
+        const note = document.createElement('p');
+        note.className = 'empty';
+        note.textContent = 'Les sketches seront bientôt présentés ici.';
+        sketchGallery.appendChild(note);
+        return;
+      }
+      SKETCHES.forEach((work) => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'piece';
+        const frame = document.createElement('div');
+        frame.className = 'frame';
+        if (work.image) {
+          const img = document.createElement('img');
+          img.src = work.image;
+          img.alt = work.title;
+          img.loading = 'lazy';
+          frame.appendChild(img);
+          button.addEventListener('click', () => openModal(work));
+        } else {
+          const placeholder = document.createElement('div');
+          placeholder.className = 'placeholder';
+          placeholder.textContent = 'Sketch à venir';
+          frame.appendChild(placeholder);
+          button.disabled = true;
+        }
+        const title = document.createElement('h2');
+        title.textContent = work.title;
+        const details = document.createElement('p');
+        details.textContent = 'Sketch · Dualité';
+        const status = document.createElement('div');
+        status.className = 'artwork-status';
+        const dot = document.createElement('span');
+        dot.className = 'status-dot ' + (work.status || 'disponible');
+        dot.setAttribute('aria-hidden', 'true');
+        const statusText = document.createElement('span');
+        statusText.textContent = getStatusLabel(work.status);
+        status.append(dot, statusText);
+        button.append(frame, title, details, status);
+        sketchGallery.appendChild(button);
+      });
+    }
+    renderSketches();
 
     WORKS.forEach((work) => {
       const button = document.createElement('button');
