@@ -478,13 +478,13 @@ header {
   letter-spacing:.045em;
 }
 
-.navlinks a:last-child {
+.navlinks > a:last-child {
   background:#fa3154;
   color:white;
   padding:12px 17px;
 }
 
-.navlinks a:last-child:hover {
+.navlinks > a:last-child:hover {
   background:#111;
   color:white;
 }
@@ -500,15 +500,13 @@ header {
   letter-spacing:.14em;
 }
 
-
 .hero h1 {
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: 900;
-  letter-spacing: -0.065em;
-  font-size: clamp(40px, 5vw, 80px);
-  line-height: 1;
+  font-family:Arial,Helvetica,sans-serif;
+  font-weight:900;
+  letter-spacing:-.085em;
+  font-size:clamp(68px,8.5vw,132px);
+  line-height:.9;
 }
-
 
 .hero h1::after {
   content:"✳";
@@ -689,111 +687,23 @@ footer::after {
     transform:rotate(1deg);
     box-shadow:10px 10px 0 #fa3154;
   }
-  .navlinks a:last-child {
+  .navlinks > a:last-child {
     padding:9px;
   }
   .sectionhead::after {
     display:none;
   }
 }
-	  
-/* Exibir as pinturas inteiras na galeria */
-.piece .frame {
-  aspect-ratio: 4 / 3;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 12px;
-}
 
-.piece .painting {
-  width: 100%;
-  height: 100%;
-  background-size: contain !important;
-  background-position: center !important;
-  background-repeat: no-repeat !important;
-}
-
-	  
-/* MENU SUSPENSO DA GALERIA */
-
-.dropdown {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-.dropdown-toggle {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  padding: 12px 0;
-}
-
-.dropdown-menu {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  min-width: 190px;
-  background: white;
-  border: 1px solid #e5e5e5;
-  box-shadow: 0 10px 25px #00000015;
-  z-index: 100;
-}
-
-.dropdown-menu a {
-  display: block;
-  padding: 15px 18px;
-  font-size: 12px;
-  font-weight: 800;
-  color: #151515;
-  text-decoration: none;
-}
-
-.dropdown-menu a:hover {
-  background: #fa3154;
-  color: white;
-}
-
-.dropdown:hover .dropdown-menu,
-.dropdown:focus-within .dropdown-menu {
-  display: block;
-}
-
-	  
-/* ALINHAMENTO DO MENU SUPERIOR */
-
-.navlinks {
-  display: flex;
-  align-items: center;
-  gap: 28px;
-}
-
-.dropdown {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-.dropdown-toggle {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 0;
-  line-height: 1;
-}
-
-.dropdown-toggle span {
-  font-size: 12px;
-}
-
-.dropdown-menu {
-  top: 100%;
-  padding-top: 12px;
-}
-
-	  
+/* Navigation des collections */
+.navlinks { display:flex; align-items:center; gap:28px; }
+.dropdown { position:relative; display:flex; align-items:center; }
+.dropdown-toggle { display:inline-flex; align-items:center; gap:7px; line-height:normal; }
+.dropdown-menu { display:none; position:absolute; top:100%; left:0; min-width:190px; background:#fff; border:1px solid #e5e5e5; box-shadow:0 10px 25px #00000015; z-index:100; }
+.dropdown-menu a { display:block; padding:15px 18px; font-size:12px; font-weight:800; color:#151515; text-decoration:none; white-space:nowrap; }
+.dropdown-menu a:hover { background:#fa3154; color:white; }
+.dropdown:hover .dropdown-menu, .dropdown:focus-within .dropdown-menu { display:block; }
+@media(max-width:700px) { .navlinks { gap:10px; } .dropdown-menu { left:auto; right:0; } }
   </style>
  </head>
  <body>
@@ -803,23 +713,13 @@ footer::after {
      GALERIE CHICO
     </a>
     <div class="navlinks">
-		
-<div class="dropdown">
-  <a href="#galerie" class="dropdown-toggle">
-    Galerie <span>⌄</span>
-  </a>
-
-  <div class="dropdown-menu">
-    <a href="vida-de-bob.html">
-      A Vida de Bob
-    </a>
-
-    <a href="dualidade.html">
-      Dualidade
-    </a>
-  </div>
-</div>		
-		
+     <div class="dropdown">
+      <a class="dropdown-toggle" href="#galerie" aria-haspopup="true">Galerie <span aria-hidden="true">⌄</span></a>
+      <div class="dropdown-menu">
+       <a href="vida-de-bob.html">A Vida de Bob</a>
+       <a href="dualite.html">Dualité</a>
+      </div>
+     </div>
      <a href="#apropos">
       À propos
      </a>
@@ -835,23 +735,20 @@ footer::after {
      <div class="eyebrow">
       Galerie indépendante · Art original
      </div>
-     
-	<h1>
-	  L’art des<br>
-	  contrastes.
-	</h1>
-
-	<p class="lead">
-	  Entre ombre et lumière, rêve et réalité,
-	  beauté et contradiction. Une exploration
-	  des dualités du monde à travers l’art.
-	</p>
-
-	<a class="cta" href="#galerie">
-	  Découvrir les œuvres
-	  <span>↗</span>
-	</a>
-
+     <h1>
+      L’art à
+      <br/>
+      ressentir.
+     </h1>
+     <p class="lead">
+      Une rencontre entre formes, couleurs et histoires. Explorez les œuvres et découvrez l’univers de chaque création.
+     </p>
+     <a class="cta" href="#galerie">
+      Découvrir la galerie
+      <span>
+       ↗
+      </span>
+     </a>
     </div>
     <div class="heroart">
      <div aria-label="Illustration abstraite temporaire" class="artwork" role="img">

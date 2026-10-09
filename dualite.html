@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Découvrez la collection A Vida de Bob de Galerie Chico, une exploration artistique des contrastes et des histoires.">
-  <title>A Vida de Bob — Galerie Chico</title>
+  <meta name="description" content="Découvrez la collection Dualité de Galerie Chico, une exploration artistique des contrastes et des histoires.">
+  <title>Dualité — Galerie Chico</title>
   <style>
     :root { --ink:#151515; --pink:#fa3154; --blue:#1647ff; --line:#e5e5e5; }
     * { box-sizing:border-box; }
@@ -28,6 +28,7 @@
     .back { display:inline-block; margin-top:20px; font-size:12px; font-weight:900; text-transform:uppercase; letter-spacing:.06em; border-bottom:2px solid #111; padding-bottom:8px; }
     .back:hover { color:var(--pink); border-color:var(--pink); }
     .gallery { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:28px; padding-bottom:110px; }
+    .empty { grid-column:1/-1; padding:70px 20px; background:#f6f6f6; text-align:center; color:#555; font-size:17px; }
     .piece { border:0; padding:0; background:none; text-align:left; cursor:pointer; color:inherit; }
     .frame { aspect-ratio:4/5; background:#f3f3f3; padding:14px; display:flex; align-items:center; justify-content:center; }
     .piece:nth-child(3n+2) .frame { background:#e9e6ff; }
@@ -56,7 +57,7 @@
       <a class="brand" href="index.html">GALERIE CHICO</a>
       <div class="navlinks">
         <a href="index.html">Accueil</a>
-        <a href="dualite.html">Dualité</a>
+        <a href="vida-de-bob.html">A Vida de Bob</a>
         <a class="contact" href="index.html#contact">Contact</a>
       </div>
     </nav>
@@ -64,8 +65,8 @@
   <main>
     <section class="intro wrap">
       <div class="eyebrow">Collection · Galerie Chico</div>
-      <h1>A Vida de Bob<span style="color:#f6c900">✳</span></h1>
-      <p class="lead">Découvrez les œuvres de la collection <em>A Vida de Bob</em>. Chaque peinture ouvre une fenêtre sur un univers singulier.</p>
+      <h1>Dualité<span style="color:#1647ff">✳</span></h1>
+      <p class="lead">Une exploration des contrastes, des oppositions et des liens entre deux réalités. Découvrez les œuvres de la collection <em>Dualité</em>.</p>
       <a class="back" href="index.html">← Retour à l’accueil</a>
     </section>
     <section class="gallery wrap" id="gallery" aria-label="Œuvres de la collection"></section>
@@ -83,14 +84,21 @@
     // AJOUTEZ VOS ŒUVRES ICI. Placez les fichiers image dans le même dossier que cette page.
     // Pour ajouter une œuvre, copiez un objet et renseignez son titre, ses détails et son image.
     const WORKS = [
-      { title: 'A Vida de Bob — I', details: 'Collection A Vida de Bob · Œuvre 01', image: 'Desilusion.jpg' },
-      // Exemple : { title: 'A Vida de Bob — II', details: 'Collection A Vida de Bob · Œuvre 02', image: 'bob-02.webp' },
+      // Ajoutez ici les œuvres de la collection Dualité.
+      // Exemple : { title: 'La Réalité', details: 'Collection Dualité · Peinture', image: 'la-realite.jpg' },
     ];
 
     const gallery = document.getElementById('gallery');
     const modal = document.getElementById('modal');
     const modalImage = document.getElementById('modalImage');
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    if (WORKS.length === 0) {
+      const note = document.createElement('p');
+      note.className = 'empty';
+      note.textContent = 'Les œuvres de cette collection seront bientôt présentées ici.';
+      gallery.appendChild(note);
+    }
 
     WORKS.forEach((work) => {
       const button = document.createElement('button');
