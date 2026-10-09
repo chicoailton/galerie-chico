@@ -68,6 +68,36 @@
       text-align: center;
     }
 
+    /* Disponibilidade das obras */
+.artwork-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  margin-top: 9px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.status-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.status-dot.disponible {
+  background: #22a06b;
+}
+
+.status-dot.vendu {
+  background: #e34d59;
+}
+
+.status-dot.reserve {
+  background: #e2a72e;
+}
     
   </style>
 </head>
@@ -105,12 +135,12 @@
     // Envoyez vos images dans le même dossier GitHub que vida-de-bob.html.
     // Laissez image: '' pour afficher un emplacement « Œuvre à venir ».
     const WORKS = [
-      { title: 'Adoção de Bob', description: '', year: '', technique: '', dimensions: '', image: 'AdocaodeBob.jpg' },
-      { title: 'Ordem e Progresso, Bob e um gato preto', description: '', year: '', technique: '', dimensions: '', image: 'Ordem.jpg' },
-      { title: 'Hoje, Bob não quer ir para o mar', description: '', year: '', technique: '', dimensions: '', image: 'HojeBobNaoQuerIrParaOMar.jpg' },
-      { title: 'Reflexos de uma noite de verão', description: '', year: '', technique: '', dimensions: '', image: 'ReflexosdeumaNoitedeVerao.jpg' },
-      { title: 'Domingo em família', description: '', year: '', technique: '', dimensions: '', image: 'DomingoEmFamilia.jpg' },
-      { title: 'A última gota', description: '', year: '', technique: '', dimensions: '', image: 'AultimaGota.jpg' }
+      { title: 'Adoção de Bob', description: '', year: '', technique: '', dimensions: '', image: 'AdocaodeBob.jpg', status: 'vendu'},
+      { title: 'Ordem e Progresso, Bob e um gato preto', description: '', year: '', technique: '', dimensions: '', image: 'Ordem.jpg', status: 'vendu' },
+      { title: 'Hoje, Bob não quer ir para o mar', description: '', year: '', technique: '', dimensions: '', image: 'HojeBobNaoQuerIrParaOMar.jpg', status: 'disponible' },
+      { title: 'Reflexos de uma noite de verão', description: '', year: '', technique: '', dimensions: '', image: 'ReflexosdeumaNoitedeVerao.jpg', status: 'vendu' },
+      { title: 'Domingo em família', description: '', year: '', technique: '', dimensions: '', image: 'DomingoEmFamilia.jpg', status: 'disponible'},
+      { title: 'A última gota', description: '', year: '', technique: '', dimensions: '', image: 'AultimaGota.jpg', status: 'disponible' }
     ];
 
     function workDetails(work) {
