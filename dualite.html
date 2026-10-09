@@ -30,9 +30,14 @@
     .gallery { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:35px 28px; padding-bottom:110px; }
     .empty { grid-column:1/-1; padding:70px 20px; background:#f6f6f6; text-align:center; color:#555; font-size:17px; }
     .piece { border:0; padding:0; background:none; text-align:center; cursor:pointer; color:inherit; min-width:0; }
-    .frame { aspect-ratio:4/5; background:#f3f3f3; padding:14px; display:flex; align-items:center; justify-content:center; }
-    .piece:nth-child(3n+2) .frame { background:#e9e6ff; }
-    .piece:nth-child(3n+3) .frame { background:#fff0a8; }
+    /* Fonds RGB purs : rouge, vert, bleu, cyan, magenta, jaune */
+    .frame { aspect-ratio:4/5; background:#FF0000; padding:14px; display:flex; align-items:center; justify-content:center; }
+    .piece:nth-child(6n+1) .frame { background:#FF0000; }
+    .piece:nth-child(6n+2) .frame { background:#00FF00; }
+    .piece:nth-child(6n+3) .frame { background:#0000FF; }
+    .piece:nth-child(6n+4) .frame { background:#00FFFF; }
+    .piece:nth-child(6n+5) .frame { background:#FF00FF; }
+    .piece:nth-child(6n+6) .frame { background:#FFFF00; }
     .frame img { width:100%; height:100%; object-fit:contain; display:block; transition:transform .25s; }
     .piece:hover img { transform:scale(1.025); }
     .piece h2 { font-size:13px; font-weight:600; letter-spacing:-.02em; text-align:center; line-height:1.35; margin:15px 0 5px; }
