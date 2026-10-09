@@ -259,6 +259,18 @@
       cursor: default;
     }
 
+    /* SKETCHES */
+    .sketch-section { padding-top: 55px; padding-bottom: 100px; border-top: 2px solid #151515; }
+    .sketch-heading { font-size: clamp(26px, 4vw, 40px); font-weight: 900; letter-spacing: -.05em; margin: 0 0 32px; }
+    .sketch-gallery { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:35px 28px; }
+    .sketch-item { border:0; padding:0; background:none; text-align:center; cursor:pointer; color:inherit; min-width:0; }
+    .sketch-frame { aspect-ratio:4/5; background:#f3f3f3; padding:14px; display:flex; align-items:center; justify-content:center; }
+    .sketch-frame img { width:100%; height:100%; object-fit:contain; display:block; transition:transform .25s; }
+    .sketch-item:hover img { transform:scale(1.025); }
+    .sketch-item h3 { font-size:13px; font-weight:600; margin:15px 0 0; line-height:1.35; }
+    @media(max-width:760px) { .sketch-gallery { grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; } }
+    @media(max-width:480px) { .sketch-gallery { grid-template-columns:1fr; } }
+
     /* FOOTER */
 
     footer {
@@ -392,6 +404,10 @@
       aria-label="Œuvres de la collection">
     </section>
 
+    <section class="sketch-section wrap" aria-label="Sketches de la collection">
+      <h2 class="sketch-heading">A Vida de Bob – Sketches</h2>
+      <div class="sketch-gallery" id="sketchGallery"></div>
+    </section>
   </main>
 
   <footer class="wrap">
@@ -518,6 +534,12 @@
 
     ];
 
+    // ADICIONE OS SKETCHES AQUI. Substitua pelos nomes reais dos arquivos.
+    const SKETCHES = [
+      // { title: 'Sketch 1', image: 'Sketch1.jpg' },
+      // { title: 'Sketch 2', image: 'Sketch2.jpg' },
+    ];
+
     /* FUNÇÕES */
 
     function workDetails(work) {
@@ -635,6 +657,33 @@
 
       gallery.appendChild(button);
 
+    });
+
+    /* CRIAR A GALERIA DE SKETCHES */
+    const sketchGallery = document.getElementById('sketchGallery');
+    SKETCHES.forEach((sketch) => {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'sketch-item';
+      const frame = document.createElement('div');
+      frame.className = 'sketch-frame';
+      const img = document.createElement('img');
+      img.src = sketch.image;
+      img.alt = sketch.title;
+      img.loading = 'lazy';
+      const title = document.createElement('h3');
+      title.textContent = sketch.title;
+      frame.appendChild(img);
+      button.append(frame, title);
+      button.addEventListener('click', () => {
+        modalImage.src = sketch.image;
+        modalImage.alt = sketch.title;
+        document.getElementById('modalTitle').textContent = sketch.title;
+        document.getElementById('modalDetails').textContent = 'Sketch · Collection A Vida de Bob';
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden', 'false');
+      });
+      sketchGallery.appendChild(button);
     });
 
     /* FECHAR MODAL */
