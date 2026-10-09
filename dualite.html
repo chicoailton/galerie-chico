@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Découvrez la collection Dualité de Galerie Chico, une exploration artistique des contrastes et des histoires.">
+  <meta name="description" content="Découvrez Dualité, une collection d'œuvres sur les contrastes et les liens entre deux réalités, par Galerie Chico.">
   <title>Dualité — Galerie Chico</title>
   <style>
-    :root { --ink:#151515; --pink:#fa3154; --blue:#1647ff; --line:#e5e5e5; }
+    :root { --ink:#151515; --pink:#fa3154; --blue:#1647ff; }
     * { box-sizing:border-box; }
     html { scroll-behavior:smooth; }
     body { margin:0; background:#fff; color:var(--ink); font-family:Arial,Helvetica,sans-serif; }
@@ -27,16 +27,21 @@
     .lead { max-width:620px; color:#555; font-size:17px; line-height:1.8; }
     .back { display:inline-block; margin-top:20px; font-size:12px; font-weight:900; text-transform:uppercase; letter-spacing:.06em; border-bottom:2px solid #111; padding-bottom:8px; }
     .back:hover { color:var(--pink); border-color:var(--pink); }
-    .gallery { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:28px; padding-bottom:110px; }
+    .gallery { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:35px 28px; padding-bottom:110px; }
     .empty { grid-column:1/-1; padding:70px 20px; background:#f6f6f6; text-align:center; color:#555; font-size:17px; }
-    .piece { border:0; padding:0; background:none; text-align:left; cursor:pointer; color:inherit; }
+    .piece { border:0; padding:0; background:none; text-align:center; cursor:pointer; color:inherit; min-width:0; }
     .frame { aspect-ratio:4/5; background:#f3f3f3; padding:14px; display:flex; align-items:center; justify-content:center; }
     .piece:nth-child(3n+2) .frame { background:#e9e6ff; }
     .piece:nth-child(3n+3) .frame { background:#fff0a8; }
     .frame img { width:100%; height:100%; object-fit:contain; display:block; transition:transform .25s; }
     .piece:hover img { transform:scale(1.025); }
-    .piece h2 { font-size:24px; letter-spacing:-.04em; margin:18px 0 5px; }
-    .piece p { margin:0; color:#666; font-size:13px; line-height:1.6; }
+    .piece h2 { font-size:13px; font-weight:600; letter-spacing:-.02em; text-align:center; line-height:1.35; margin:15px 0 5px; }
+    .piece p { margin:0; color:#666; font-size:12px; line-height:1.6; text-align:center; }
+    .artwork-status { display:flex; align-items:center; justify-content:center; gap:7px; margin-top:10px; font-size:12px; font-weight:600; }
+    .status-dot { width:9px; height:9px; border-radius:50%; display:inline-block; flex-shrink:0; }
+    .status-dot.disponible { background:#22a06b; }
+    .status-dot.vendu { background:#e34d59; }
+    .status-dot.reserve { background:#e2a72e; }
     .placeholder { width:100%; height:100%; display:flex; align-items:center; justify-content:center; padding:25px; border:2px dashed #aaa; color:#666; font-size:13px; text-align:center; }
     .piece:disabled { cursor:default; }
     footer { border-top:3px solid #151515; padding-top:28px; padding-bottom:28px; font-size:12px; color:#666; }
@@ -45,7 +50,10 @@
     .modalinner { position:relative; background:white; width:min(850px,100%); max-height:92vh; overflow:auto; padding:25px; }
     .modal img { display:block; max-width:100%; max-height:65vh; width:auto; height:auto; margin:auto; object-fit:contain; }
     .modal h2 { font-size:24px; margin:20px 0 6px; }
-    .modal p { color:#666; font-size:14px; }
+    .modal p { color:#555; font-size:14px; line-height:1.7; }
+    .artwork-info { border-top:1px solid #e5e5e5; padding-top:12px; margin-top:18px; }
+    .artwork-info p { margin:5px 0; font-size:13px; }
+    .artwork-info strong { color:#151515; }
     .close { position:absolute; top:8px; right:12px; background:white; border:0; font-size:30px; cursor:pointer; }
     @media(max-width:760px) { nav { min-height:68px; } .brand { font-size:16px; } .navlinks { gap:12px; font-size:10px; } .contact { padding:10px; } .intro { padding-top:65px; } .gallery { grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; } }
     @media(max-width:480px) { .gallery { grid-template-columns:1fr; } .navlinks { gap:8px; } .brand { font-size:14px; } }
@@ -77,21 +85,73 @@
       <button class="close" id="closeModal" aria-label="Fermer">×</button>
       <img id="modalImage" alt="">
       <h2 id="modalTitle"></h2>
-      <p id="modalDetails"></p>
+      <div id="modalDetails"></div>
     </div>
   </div>
   <script>
-    // AJOUTEZ VOS ŒUVRES ICI. Placez les fichiers image dans le même dossier que cette page.
-    // Pour ajouter une œuvre, copiez un objet et renseignez son titre, ses détails et son image.
+    /*
+      ADICIONE AS PINTURAS AQUI.
+      image: nome exato do arquivo JPG/PNG enviado ao GitHub.
+      status: 'disponible' (verde), 'vendu' (vermelho), 'reserve' (amarelo).
+      Copie o bloco abaixo para cada obra, separando os blocos por vírgulas.
+    */
     const WORKS = [
-      // Ajoutez ici les œuvres de la collection Dualité.
-      // Exemple : { title: 'La Réalité', details: 'Collection Dualité · Peinture', image: 'la-realite.jpg' },
+      // Exemplo (retire as barras // e preencha com os dados reais):
+      // {
+      //   title: 'La Réalité',
+      //   description: 'Description de l’œuvre en français.',
+      //   year: '2026',
+      //   technique: 'Pastel sur papier',
+      //   dimensions: '30 × 40 cm',
+      //   image: 'LaRealite.jpg',
+      //   status: 'disponible'
+      // }
     ];
 
     const gallery = document.getElementById('gallery');
     const modal = document.getElementById('modal');
     const modalImage = document.getElementById('modalImage');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDetails = document.getElementById('modalDetails');
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    function getStatusLabel(status) {
+      if (status === 'vendu') return 'Vendu';
+      if (status === 'reserve') return 'Réservé';
+      return 'Disponible';
+    }
+
+    function openModal(work) {
+      modalImage.src = work.image;
+      modalImage.alt = work.title;
+      modalTitle.textContent = work.title;
+      modalDetails.replaceChildren();
+
+      if (work.description) {
+        const description = document.createElement('p');
+        description.textContent = work.description;
+        modalDetails.appendChild(description);
+      }
+
+      const info = document.createElement('div');
+      info.className = 'artwork-info';
+      [
+        ['Année', work.year],
+        ['Technique', work.technique],
+        ['Dimensions', work.dimensions],
+        ['Disponibilité', getStatusLabel(work.status)]
+      ].forEach(([label, value]) => {
+        if (!value) return;
+        const line = document.createElement('p');
+        const strong = document.createElement('strong');
+        strong.textContent = label + ' : ';
+        line.append(strong, document.createTextNode(value));
+        info.appendChild(line);
+      });
+      modalDetails.appendChild(info);
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+    }
 
     if (WORKS.length === 0) {
       const note = document.createElement('p');
@@ -106,24 +166,35 @@
       button.className = 'piece';
       const frame = document.createElement('div');
       frame.className = 'frame';
-      const img = document.createElement('img');
-      img.src = work.image;
-      img.alt = work.title;
-      img.loading = 'lazy';
-      frame.appendChild(img);
+
+      if (work.image) {
+        const img = document.createElement('img');
+        img.src = work.image;
+        img.alt = work.title;
+        img.loading = 'lazy';
+        frame.appendChild(img);
+      } else {
+        const placeholder = document.createElement('div');
+        placeholder.className = 'placeholder';
+        placeholder.textContent = 'Œuvre à venir';
+        frame.appendChild(placeholder);
+        button.disabled = true;
+      }
+
       const title = document.createElement('h2');
       title.textContent = work.title;
       const details = document.createElement('p');
-      details.textContent = work.details;
-      button.append(frame, title, details);
-      button.addEventListener('click', () => {
-        modalImage.src = work.image;
-        modalImage.alt = work.title;
-        document.getElementById('modalTitle').textContent = work.title;
-        document.getElementById('modalDetails').textContent = work.details;
-        modal.classList.add('open');
-        modal.setAttribute('aria-hidden', 'false');
-      });
+      details.textContent = 'Collection Dualité';
+      const status = document.createElement('div');
+      status.className = 'artwork-status';
+      const dot = document.createElement('span');
+      dot.className = 'status-dot ' + (work.status || 'disponible');
+      dot.setAttribute('aria-hidden', 'true');
+      const statusText = document.createElement('span');
+      statusText.textContent = getStatusLabel(work.status);
+      status.append(dot, statusText);
+      button.append(frame, title, details, status);
+      if (work.image) button.addEventListener('click', () => openModal(work));
       gallery.appendChild(button);
     });
 
