@@ -1,110 +1,362 @@
+
 <!doctype html>
 <html lang="fr">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Découvrez la collection A Vida de Bob de Galerie Chico, une exploration artistique des contrastes et des histoires.">
+  <meta name="description" content="Découvrez la collection A Vida de Bob de Galerie Chico. Chaque peinture capture un instant de la vie de Bob.">
   <title>A Vida de Bob — Galerie Chico</title>
+
   <style>
-    :root { --ink:#151515; --pink:#fa3154; --blue:#1647ff; --line:#e5e5e5; }
-    * { box-sizing:border-box; }
-    html { scroll-behavior:smooth; }
-    body { margin:0; background:#fff; color:var(--ink); font-family:Arial,Helvetica,sans-serif; }
-    a { color:inherit; text-decoration:none; }
-    button { font:inherit; }
-    .wrap { max-width:1240px; margin:auto; padding-left:5%; padding-right:5%; }
-    header { position:sticky; top:0; z-index:10; background:#ffffffed; border-top:4px solid #111; border-bottom:2px solid #161616; backdrop-filter:blur(10px); }
-    nav { min-height:80px; display:flex; align-items:center; justify-content:space-between; gap:18px; }
-    .brand { font-size:20px; font-weight:900; letter-spacing:-.055em; white-space:nowrap; }
-    .brand::before { content:'●'; color:var(--pink); margin-right:9px; }
-    .navlinks { display:flex; align-items:center; gap:28px; font-size:12px; font-weight:800; text-transform:uppercase; }
-    .navlinks a:hover { color:var(--pink); }
-    .contact { padding:14px 18px; color:white; background:var(--pink); }
-    .navlinks .contact:hover { background:#111; color:white; }
-    .intro { padding-top:95px; padding-bottom:65px; }
-    .eyebrow { font-size:11px; font-weight:900; letter-spacing:.14em; color:var(--pink); text-transform:uppercase; }
-    h1 { margin:22px 0; font-size:clamp(54px,8vw,110px); line-height:.95; letter-spacing:-.075em; font-weight:900; }
-    .lead { max-width:620px; color:#555; font-size:17px; line-height:1.8; }
-    .back { display:inline-block; margin-top:20px; font-size:12px; font-weight:900; text-transform:uppercase; letter-spacing:.06em; border-bottom:2px solid #111; padding-bottom:8px; }
-    .back:hover { color:var(--pink); border-color:var(--pink); }
-    .gallery { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:28px; padding-bottom:110px; }
-    .piece { border:0; padding:0; background:none; text-align:left; cursor:pointer; color:inherit; }
-    .frame { aspect-ratio:4/5; background:#f3f3f3; padding:14px; display:flex; align-items:center; justify-content:center; }
-    .piece:nth-child(3n+2) .frame { background:#e9e6ff; }
-    .piece:nth-child(3n+3) .frame { background:#fff0a8; }
-    .frame img { width:100%; height:100%; object-fit:contain; display:block; transition:transform .25s; }
-    .piece:hover img { transform:scale(1.025); }
-    .piece h2 { font-size:24px; letter-spacing:-.04em; margin:18px 0 5px; }
-    .piece p { margin:0; color:#666; font-size:13px; line-height:1.6; }
-    .placeholder { width:100%; height:100%; display:flex; align-items:center; justify-content:center; padding:25px; border:2px dashed #aaa; color:#666; font-size:13px; text-align:center; }
-    .piece:disabled { cursor:default; }
-    footer { border-top:3px solid #151515; padding-top:28px; padding-bottom:28px; font-size:12px; color:#666; }
-    .modal { position:fixed; inset:0; z-index:30; display:none; align-items:center; justify-content:center; padding:22px; background:#111e; }
-    .modal.open { display:flex; }
-    .modalinner { position:relative; background:white; width:min(850px,100%); max-height:92vh; overflow:auto; padding:25px; }
-    .modal img { display:block; max-width:100%; max-height:65vh; width:auto; height:auto; margin:auto; object-fit:contain; }
-    .modal h2 { font-size:24px; margin:20px 0 6px; }
-    .modal p { color:#666; font-size:14px; }
-    .close { position:absolute; top:8px; right:12px; background:white; border:0; font-size:30px; cursor:pointer; }
-    @media(max-width:760px) { nav { min-height:68px; } .brand { font-size:16px; } .navlinks { gap:12px; font-size:10px; } .contact { padding:10px; } .intro { padding-top:65px; } .gallery { grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; } }
-    @media(max-width:480px) { .gallery { grid-template-columns:1fr; } .navlinks { gap:8px; } .brand { font-size:14px; } }
-
-        /* Títulos das obras */
-    .piece h3 {
-      font-size: 13px !important;
-      text-align: center;
-      line-height: 1.3;
-      margin: 14px 0 6px;
+    :root {
+      --ink: #151515;
+      --pink: #fa3154;
+      --blue: #1647ff;
+      --line: #e5e5e5;
     }
-    
-    /* Descrição abaixo dos títulos */
-    .piece .small {
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: #fff;
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button { font: inherit; }
+
+    .wrap {
+      max-width: 1240px;
+      margin: auto;
+      padding-left: 5%;
+      padding-right: 5%;
+    }
+
+    /* NAVIGATION */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: #ffffffed;
+      border-top: 4px solid #111;
+      border-bottom: 2px solid #161616;
+      backdrop-filter: blur(10px);
+    }
+
+    nav {
+      min-height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: -.055em;
+      white-space: nowrap;
+    }
+
+    .brand::before {
+      content: '●';
+      color: var(--pink);
+      margin-right: 9px;
+    }
+
+    .navlinks {
+      display: flex;
+      align-items: center;
+      gap: 28px;
       font-size: 12px;
-      text-align: center;
+      font-weight: 800;
+      text-transform: uppercase;
     }
-    
-    /* Centralizar o conteúdo dos cartões */
+
+    .navlinks a:hover {
+      color: var(--pink);
+    }
+
+    .contact {
+      padding: 14px 18px;
+      color: white;
+      background: var(--pink);
+    }
+
+    .navlinks .contact:hover {
+      background: #111;
+      color: white;
+    }
+
+    /* INTRODUÇÃO */
+
+    .intro {
+      padding-top: 95px;
+      padding-bottom: 65px;
+    }
+
+    .eyebrow {
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .14em;
+      color: var(--pink);
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 22px 0;
+      font-size: clamp(54px, 8vw, 110px);
+      line-height: .95;
+      letter-spacing: -.075em;
+      font-weight: 900;
+    }
+
+    .lead {
+      max-width: 620px;
+      color: #555;
+      font-size: 17px;
+      line-height: 1.8;
+    }
+
+    .back {
+      display: inline-block;
+      margin-top: 20px;
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      border-bottom: 2px solid #111;
+      padding-bottom: 8px;
+    }
+
+    .back:hover {
+      color: var(--pink);
+      border-color: var(--pink);
+    }
+
+    /* GALERIA */
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 35px 28px;
+      padding-bottom: 110px;
+    }
+
     .piece {
+      border: 0;
+      padding: 0;
+      background: none;
+      text-align: center;
+      cursor: pointer;
+      color: inherit;
+      min-width: 0;
+    }
+
+    .frame {
+      aspect-ratio: 4 / 5;
+      background: #f3f3f3;
+      padding: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .piece:nth-child(3n+2) .frame {
+      background: #e9e6ff;
+    }
+
+    .piece:nth-child(3n+3) .frame {
+      background: #fff0a8;
+    }
+
+    .frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      transition: transform .25s;
+    }
+
+    .piece:hover img {
+      transform: scale(1.025);
+    }
+
+    /* TÍTULOS CENTRALIZADOS */
+
+    .piece h2 {
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: -.02em;
+      text-align: center;
+      line-height: 1.35;
+      margin: 15px 0 5px;
+    }
+
+    .piece p {
+      margin: 0;
+      color: #666;
+      font-size: 12px;
+      line-height: 1.6;
       text-align: center;
     }
 
-    /* Disponibilidade das obras */
-.artwork-status {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 7px;
-  margin-top: 9px;
-  font-size: 12px;
-  font-weight: 600;
-}
+    /* BOLINHAS DE DISPONIBILIDADE */
 
-.status-dot {
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  display: inline-block;
-  flex-shrink: 0;
-}
+    .artwork-status {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      margin-top: 10px;
+      font-size: 12px;
+      font-weight: 600;
+    }
 
-.status-dot.disponible {
-  background: #22a06b;
-}
+    .status-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      display: inline-block;
+      flex-shrink: 0;
+    }
 
-.status-dot.vendu {
-  background: #e34d59;
-}
+    .status-dot.disponible {
+      background: #22a06b;
+    }
 
-.status-dot.reserve {
-  background: #e2a72e;
-}
-    
+    .status-dot.vendu {
+      background: #e34d59;
+    }
+
+    .status-dot.reserve {
+      background: #e2a72e;
+    }
+
+    .placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 25px;
+      border: 2px dashed #aaa;
+      color: #666;
+      font-size: 13px;
+      text-align: center;
+    }
+
+    .piece:disabled {
+      cursor: default;
+    }
+
+    /* FOOTER */
+
+    footer {
+      border-top: 3px solid #151515;
+      padding-top: 28px;
+      padding-bottom: 28px;
+      font-size: 12px;
+      color: #666;
+    }
+
+    /* AMPLIAÇÃO DAS OBRAS */
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 30;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 22px;
+      background: #111e;
+    }
+
+    .modal.open {
+      display: flex;
+    }
+
+    .modalinner {
+      position: relative;
+      background: white;
+      width: min(850px, 100%);
+      max-height: 92vh;
+      overflow: auto;
+      padding: 25px;
+    }
+
+    .modal img {
+      display: block;
+      max-width: 100%;
+      max-height: 65vh;
+      width: auto;
+      height: auto;
+      margin: auto;
+      object-fit: contain;
+    }
+
+    .modal h2 {
+      font-size: 24px;
+      margin: 20px 0 6px;
+    }
+
+    .modal p {
+      color: #666;
+      font-size: 14px;
+    }
+
+    .close {
+      position: absolute;
+      top: 8px;
+      right: 12px;
+      background: white;
+      border: 0;
+      font-size: 30px;
+      cursor: pointer;
+    }
+
+    /* RESPONSIVIDADE */
+
+    @media (max-width: 760px) {
+      nav { min-height: 68px; }
+      .brand { font-size: 16px; }
+      .navlinks { gap: 12px; font-size: 10px; }
+      .contact { padding: 10px; }
+      .intro { padding-top: 65px; }
+
+      .gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .navlinks { gap: 8px; }
+      .brand { font-size: 14px; }
+    }
   </style>
 </head>
+
 <body>
+
   <header>
     <nav class="wrap" aria-label="Navigation principale">
       <a class="brand" href="index.html">GALERIE CHICO</a>
+
       <div class="navlinks">
         <a href="index.html">Accueil</a>
         <a href="dualite.html">Dualité</a>
@@ -112,88 +364,288 @@
       </div>
     </nav>
   </header>
+
   <main>
+
     <section class="intro wrap">
       <div class="eyebrow">Collection · Galerie Chico</div>
-      <h1>A Vida de Bob<span style="color:#f6c900">✳</span></h1>
-      <p class="lead">Découvrez les œuvres de la collection *A Vida de Bob*. Chaque peinture capture un instant de la vie de Bob.</p>
-      <a class="back" href="index.html">← Retour à l’accueil</a>
+
+      <h1>
+        A Vida de Bob
+        <span style="color:#f6c900">✳</span>
+      </h1>
+
+      <p class="lead">
+        Découvrez les œuvres de la collection
+        <em>A Vida de Bob</em>.
+        Chaque peinture capture un instant de la vie de Bob.
+      </p>
+
+      <a class="back" href="index.html">
+        ← Retour à l’accueil
+      </a>
     </section>
-    <section class="gallery wrap" id="gallery" aria-label="Œuvres de la collection"></section>
+
+    <section
+      class="gallery wrap"
+      id="gallery"
+      aria-label="Œuvres de la collection">
+    </section>
+
   </main>
-  <footer class="wrap">© <span id="year"></span> Galerie Chico · Tous droits réservés.</footer>
-  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
+
+  <footer class="wrap">
+    © <span id="year"></span> Galerie Chico · Tous droits réservés.
+  </footer>
+
+  <!-- MODAL DE AMPLIAÇÃO -->
+
+  <div
+    class="modal"
+    id="modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modalTitle"
+    aria-hidden="true">
+
     <div class="modalinner">
-      <button class="close" id="closeModal" aria-label="Fermer">×</button>
+
+      <button
+        class="close"
+        id="closeModal"
+        aria-label="Fermer">
+        ×
+      </button>
+
       <img id="modalImage" alt="">
+
       <h2 id="modalTitle"></h2>
+
       <p id="modalDetails"></p>
+
     </div>
   </div>
+
   <script>
-    // AJOUTER OU MODIFIER LES ŒUVRES ICI.
-    // Envoyez vos images dans le même dossier GitHub que vida-de-bob.html.
-    // Laissez image: '' pour afficher un emplacement « Œuvre à venir ».
+
+    /*
+      =========================================
+      MODIFIER LES ŒUVRES ICI
+      =========================================
+
+      status: 'disponible' = bolinha verde
+      status: 'vendu'      = bolinha vermelha
+      status: 'reserve'    = bolinha amarela
+
+      Para adicionar informações, preencha:
+      description, year, technique, dimensions.
+
+      Os nomes das imagens devem corresponder
+      exatamente aos arquivos no GitHub.
+    */
+
     const WORKS = [
-      { title: 'Adoção de Bob', description: '', year: '', technique: '', dimensions: '', image: 'AdocaodeBob.jpg', status: 'vendu'},
-      { title: 'Ordem e Progresso, Bob e um gato preto', description: '', year: '', technique: '', dimensions: '', image: 'Ordem.jpg', status: 'vendu' },
-      { title: 'Hoje, Bob não quer ir para o mar', description: '', year: '', technique: '', dimensions: '', image: 'HojeBobNaoQuerIrParaOMar.jpg', status: 'disponible' },
-      { title: 'Reflexos de uma noite de verão', description: '', year: '', technique: '', dimensions: '', image: 'ReflexosdeumaNoitedeVerao.jpg', status: 'vendu' },
-      { title: 'Domingo em família', description: '', year: '', technique: '', dimensions: '', image: 'DomingoEmFamilia.jpg', status: 'disponible'},
-      { title: 'A última gota', description: '', year: '', technique: '', dimensions: '', image: 'AultimaGota.jpg', status: 'disponible' }
+
+      {
+        title: 'Adoção de Bob',
+        description: '',
+        year: '',
+        technique: '',
+        dimensions: '',
+        image: 'AdocaodeBob.jpg',
+        status: 'vendu'
+      },
+
+      {
+        title: 'Ordem e Progresso, Bob e um gato preto',
+        description: '',
+        year: '',
+        technique: '',
+        dimensions: '',
+        image: 'Ordem.jpg',
+        status: 'vendu'
+      },
+
+      {
+        title: 'Hoje, Bob não quer ir para o mar',
+        description: '',
+        year: '',
+        technique: '',
+        dimensions: '',
+        image: 'HojeBobNaoQuerIrParaOMar.jpg',
+        status: 'disponible'
+      },
+
+      {
+        title: 'Reflexos de uma noite de verão',
+        description: '',
+        year: '',
+        technique: '',
+        dimensions: '',
+        image: 'ReflexosdeumaNoitedeVerao.jpg',
+        status: 'vendu'
+      },
+
+      {
+        title: 'Domingo em família',
+        description: '',
+        year: '',
+        technique: '',
+        dimensions: '',
+        image: 'DomingoEmFamilia.jpg',
+        status: 'disponible'
+      },
+
+      {
+        title: 'A última gota',
+        description: '',
+        year: '',
+        technique: '',
+        dimensions: '',
+        image: 'AultimaGota.jpg',
+        status: 'disponible'
+      }
+
     ];
 
+    /* FUNÇÕES */
+
     function workDetails(work) {
-      return [work.year, work.technique, work.dimensions].filter(Boolean).join(' · ');
+      return [
+        work.year,
+        work.technique,
+        work.dimensions
+      ].filter(Boolean).join(' · ');
+    }
+
+    function getStatusLabel(status) {
+      if (status === 'vendu') return 'Vendu';
+      if (status === 'reserve') return 'Réservé';
+      return 'Disponible';
     }
 
     const gallery = document.getElementById('gallery');
     const modal = document.getElementById('modal');
     const modalImage = document.getElementById('modalImage');
-    document.getElementById('year').textContent = new Date().getFullYear();
+
+    document.getElementById('year').textContent =
+      new Date().getFullYear();
+
+    /* CRIAR AS OBRAS */
 
     WORKS.forEach((work) => {
+
       const button = document.createElement('button');
       button.type = 'button';
       button.className = 'piece';
+
+      /* MOLDURA E IMAGEM */
+
       const frame = document.createElement('div');
       frame.className = 'frame';
+
       if (work.image) {
+
         const img = document.createElement('img');
         img.src = work.image;
         img.alt = work.title;
         img.loading = 'lazy';
+
         frame.appendChild(img);
+
       } else {
+
         const placeholder = document.createElement('div');
         placeholder.className = 'placeholder';
         placeholder.textContent = 'Œuvre à venir';
+
         frame.appendChild(placeholder);
         button.disabled = true;
+
       }
+
+      /* TÍTULO */
+
       const title = document.createElement('h2');
       title.textContent = work.title;
+
+      /* DESCRIÇÃO */
+
       const details = document.createElement('p');
-      details.textContent = workDetails(work) || (work.image ? 'Collection A Vida de Bob' : 'À découvrir prochainement');
-      button.append(frame, title, details);
-      if (work.image) button.addEventListener('click', () => {
-        modalImage.src = work.image;
-        modalImage.alt = work.title;
-        document.getElementById('modalTitle').textContent = work.title;
-        document.getElementById('modalDetails').textContent = [work.description, workDetails(work)].filter(Boolean).join(' — ');
-        modal.classList.add('open');
-        modal.setAttribute('aria-hidden', 'false');
-      });
+
+      details.textContent =
+        workDetails(work) ||
+        (work.image
+          ? 'Collection A Vida de Bob'
+          : 'À découvrir prochainement');
+
+      /* STATUS COM BOLINHA */
+
+      const status = document.createElement('div');
+      status.className = 'artwork-status';
+
+      const dot = document.createElement('span');
+      dot.className = 'status-dot ' + (work.status || 'disponible');
+      dot.setAttribute('aria-hidden', 'true');
+
+      const statusText = document.createElement('span');
+      statusText.textContent = getStatusLabel(work.status);
+
+      status.append(dot, statusText);
+
+      /* ADICIONAR ELEMENTOS AO CARTÃO */
+
+      button.append(frame, title, details, status);
+
+      /* ABRIR IMAGEM AMPLIADA */
+
+      if (work.image) {
+
+        button.addEventListener('click', () => {
+
+          modalImage.src = work.image;
+          modalImage.alt = work.title;
+
+          document.getElementById('modalTitle').textContent =
+            work.title;
+
+          document.getElementById('modalDetails').textContent =
+            [
+              work.description,
+              workDetails(work),
+              getStatusLabel(work.status)
+            ].filter(Boolean).join(' — ');
+
+          modal.classList.add('open');
+          modal.setAttribute('aria-hidden', 'false');
+
+        });
+
+      }
+
       gallery.appendChild(button);
+
     });
+
+    /* FECHAR MODAL */
 
     function closeModal() {
       modal.classList.remove('open');
       modal.setAttribute('aria-hidden', 'true');
     }
-    document.getElementById('closeModal').addEventListener('click', closeModal);
-    modal.addEventListener('click', (event) => { if (event.target === modal) closeModal(); });
-    document.addEventListener('keydown', (event) => { if (event.key === 'Escape') closeModal(); });
+
+    document.getElementById('closeModal')
+      .addEventListener('click', closeModal);
+
+    modal.addEventListener('click', (event) => {
+      if (event.target === modal) closeModal();
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') closeModal();
+    });
+
   </script>
+
 </body>
 </html>
