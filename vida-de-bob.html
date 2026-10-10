@@ -336,6 +336,10 @@
       margin: 20px 0 6px;
     }
 
+    .artwork-info { border-top:1px solid #e5e5e5; padding-top:12px; margin-top:18px; }
+    .artwork-info p { margin:5px 0; font-size:13px; }
+    .artwork-info strong { color:#151515; }
+
     .modal p {
       color: #666;
       font-size: 14px;
@@ -451,7 +455,7 @@
 
       <h2 id="modalTitle"></h2>
 
-      <p id="modalDetails"></p>
+      <div id="modalDetails"></div>
 
     </div>
   </div>
@@ -550,19 +554,49 @@
 
     // ADICIONE OS SKETCHES AQUI. Substitua pelos nomes reais dos arquivos.
     const SKETCHES = [
-      { title: 'Bob feels free - Sketch 1', image: 'BobFeelsFree_sketch1.jpg', status: 'disponible' },
-       { title: 'Bob feels free - Sketch 2', image: 'BobFeelsFree_sketch2.jpg', status: 'disponible' },
-      { title: 'Bob feels free - Sketch 3', image: 'MoonisDancing.jpg', status: 'disponible' },
+      { title: 'Bob feels free - Sketch 1', description:'', year:'', technique:'', dimensions:'', image: 'BobFeelsFree_sketch1.jpg', status: 'disponible' },
+       { title: 'Bob feels free - Sketch 2', description:'', year:'', technique:'', dimensions:'', image: 'BobFeelsFree_sketch2.jpg', status: 'disponible' },
+      { title: 'Bob feels free - Sketch 3', description:'', year:'', technique:'', dimensions:'', image: 'MoonisDancing.jpg', status: 'disponible' },
     ];
 
     /* FUNÇÕES */
 
     function workDetails(work) {
-      return [
-        work.year,
-        work.technique,
-        work.dimensions
-      ].filter(Boolean).join(' · ');
+      return [work.year, work.technique, work.dimensions].filter(Boolean).join(' · ');
+    }
+
+    // Mesmo painel de informações utilizado na coleção Dualité.
+    function openModal(work) {
+      modalImage.src = work.image;
+      modalImage.alt = work.title;
+      document.getElementById('modalTitle').textContent = work.title;
+      const details = document.getElementById('modalDetails');
+      details.replaceChildren();
+
+      if (work.description) {
+        const description = document.createElement('p');
+        description.textContent = work.description;
+        details.appendChild(description);
+      }
+
+      const info = document.createElement('div');
+      info.className = 'artwork-info';
+      [
+        ['Année', work.year],
+        ['Technique', work.technique],
+        ['Dimensions', work.dimensions],
+        ['Disponibilité', getStatusLabel(work.status)]
+      ].forEach(([label, value]) => {
+        if (!value) return;
+        const line = document.createElement('p');
+        const strong = document.createElement('strong');
+        strong.textContent = label + ' : ';
+        line.append(strong, document.createTextNode(value));
+        info.appendChild(line);
+      });
+      details.appendChild(info);
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
     }
 
     function getStatusLabel(status) {
@@ -650,22 +684,7 @@
 
         button.addEventListener('click', () => {
 
-          modalImage.src = work.image;
-          modalImage.alt = work.title;
-
-          document.getElementById('modalTitle').textContent =
-            work.title;
-
-          document.getElementById('modalDetails').textContent =
-            [
-              work.description,
-              workDetails(work),
-              getStatusLabel(work.status)
-            ].filter(Boolean).join(' — ');
-
-          modal.classList.add('open');
-          modal.setAttribute('aria-hidden', 'false');
-
+          openModal(work);
         });
 
       }
@@ -699,12 +718,7 @@
       status.append(dot, statusText);
       button.append(frame, title, status);
       button.addEventListener('click', () => {
-        modalImage.src = sketch.image;
-        modalImage.alt = sketch.title;
-        document.getElementById('modalTitle').textContent = sketch.title;
-        document.getElementById('modalDetails').textContent = 'Sketch · Collection A Vida de Bob';
-        modal.classList.add('open');
-        modal.setAttribute('aria-hidden', 'false');
+        openModal(sketch);
       });
       sketchGallery.appendChild(button);
     });
