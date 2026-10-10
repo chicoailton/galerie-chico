@@ -741,6 +741,31 @@ footer::after {
 @media (max-width: 760px) {
   .heroart { width: min(85%, 440px); box-shadow: 10px 10px 0 #fa3154; }
 }
+
+/* Molduras RGB e imagens em proporção original */
+.gallery .piece { min-width:0; }
+.gallery .piece .frame {
+  aspect-ratio:auto;
+  width:100%;
+  padding:13px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  background:#FF0000;
+}
+.gallery .piece:nth-child(6n+1) .frame { background:#FF0000; }
+.gallery .piece:nth-child(6n+2) .frame { background:#00FF00; }
+.gallery .piece:nth-child(6n+3) .frame { background:#0000FF; }
+.gallery .piece:nth-child(6n+4) .frame { background:#00FFFF; }
+.gallery .piece:nth-child(6n+5) .frame { background:#FF00FF; }
+.gallery .piece:nth-child(6n+6) .frame { background:#FFFF00; }
+.gallery .piece .painting { height:auto; width:100%; background:none; }
+.gallery .piece .painting img { display:block; width:100%; height:auto; object-fit:contain; transition:transform .4s; }
+.gallery .piece:hover .painting img { transform:scale(1.025); }
+.modal .painting { height:auto; background:none; }
+.modal .painting img { display:block; width:auto; max-width:100%; max-height:65vh; height:auto; object-fit:contain; margin:auto; }
+.modalinner { max-height:92vh; overflow:auto; }
 </style>
  </head>
  <body>
@@ -984,12 +1009,9 @@ $('instagram').textContent = CONFIG.instagramUrl.includes('VOTRE_PROFIL')
 $('gallery').innerHTML = WORKS.map((work, index) => `
   <button class="piece" data-index="${index}" aria-label="Voir ${work.title}">
     <div class="frame">
-      <div
-        class="painting ${work.style}"
-        ${work.image
-          ? `style="background:center/cover url('${work.image.replaceAll("'", '')}')"`
-          : ''}
-      ></div>
+      <div class="painting ${work.style}">
+        ${work.image ? `<img src="${work.image}" alt="${work.title}" loading="lazy">` : ''}
+      </div>
     </div>
     <h3>${work.title}</h3>
     <p class="small">${work.details}</p>
@@ -1008,9 +1030,13 @@ document.querySelectorAll('.piece').forEach((element) => {
     $('modalTitle').textContent = work.title;
     $('modalDetails').textContent = work.details;
     $('modalPainting').className = 'painting ' + work.style;
-    $('modalPainting').style.background = work.image
-      ? `center / cover url("${work.image}")`
-      : '';
+    $('modalPainting').replaceChildren();
+    if (work.image) {
+      const img = document.createElement('img');
+      img.src = work.image;
+      img.alt = work.title;
+      $('modalPainting').appendChild(img);
+    }
 
     $('askArtwork').onclick = () => {
       $('subject').value = work.title;
