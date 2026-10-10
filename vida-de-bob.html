@@ -587,11 +587,10 @@
         ['Dimensions', work.dimensions],
         ['Disponibilité', getStatusLabel(work.status)]
       ].forEach(([label, value]) => {
-        if (!value) return;
         const line = document.createElement('p');
         const strong = document.createElement('strong');
         strong.textContent = label + ' : ';
-        line.append(strong, document.createTextNode(value));
+        line.append(strong, document.createTextNode(value || 'À renseigner'));
         info.appendChild(line);
       });
       details.appendChild(info);
