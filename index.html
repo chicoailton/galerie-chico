@@ -996,7 +996,7 @@ footer::after {
 const CONFIG = {
   artistName: 'GALERIE CHICO',
   contactEmail: 'chicoailton@gmail.com',
-  instagramUrl: 'https://instagram.com/VOTRE_PROFIL'
+  instagramUrl: 'https://www.instagram.com/chico.oliveira.art/'
 };
 
 // ============================================================
@@ -1035,9 +1035,7 @@ $('brand').textContent = CONFIG.artistName;
 $('footerName').textContent = CONFIG.artistName;
 $('year').textContent = new Date().getFullYear();
 $('instagram').href = CONFIG.instagramUrl;
-$('instagram').textContent = CONFIG.instagramUrl.includes('VOTRE_PROFIL')
-  ? 'Profil à ajouter ↗'
-  : 'Voir Instagram ↗';
+$('instagram').textContent = '@chico.oliveira.art ↗';
 
 // Criar os cartões das obras.
 $('gallery').innerHTML = WORKS.map((work, index) => `
