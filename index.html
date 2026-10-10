@@ -907,7 +907,7 @@ footer::after {
     <div class="contactgrid">
      <div>
       <div class="eyebrow">
-       Contact
+       Contato
       </div>
       <h2>
        Parlons
@@ -920,37 +920,40 @@ footer::after {
       <p class="small">
        Instagram:
        <a class="textlink" href="https://instagram.com/" id="instagram" rel="noopener" target="_blank">
-        chico.oliveira.art ↗
+        Profil à ajouter ↗
        </a>
       </p>
      </div>
-     <form class="contactform" id="contactForm">
+     <form class="contactform" id="contactForm" action="https://formsubmit.co/chicoailton@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="Nouveau message — Galerie Chico">
+      <input type="hidden" name="_captcha" value="true">
+      <input type="hidden" name="_template" value="table">
       <div class="field">
        <label for="name">
         Votre nom
        </label>
-       <input autocomplete="name" id="name" placeholder="Comment vous appelez-vous ?" required=""/>
+       <input autocomplete="name" id="name" name="name" placeholder="Comment vous appelez-vous ?" required=""/>
       </div>
       <div class="field">
        <label for="email">
         Votre adresse e-mail
        </label>
-       <input autocomplete="email" id="email" placeholder="vous@exemple.fr" required="" type="email"/>
+       <input autocomplete="email" id="email" name="email" placeholder="vous@exemple.fr" required="" type="email"/>
       </div>
       <div class="field">
        <label for="subject">
         Œuvre souhaitée (facultatif)
        </label>
-       <input id="subject" placeholder="Titre de l’œuvre"/>
+       <input id="subject" name="oeuvre" placeholder="Titre de l’œuvre"/>
       </div>
       <div class="field">
        <label for="message">
         Votre message
        </label>
-       <textarea id="message" placeholder="Écrivez votre message…" required="" rows="4"></textarea>
+       <textarea id="message" name="message" placeholder="Écrivez votre message…" required="" rows="4"></textarea>
       </div>
       <button class="submit" type="submit">
-       Préparer le message ↗
+       Envoyer le message ↗
       </button>
      </form>
     </div>
@@ -992,7 +995,7 @@ footer::after {
 // ============================================================
 const CONFIG = {
   artistName: 'GALERIE CHICO',
-  contactEmail: 'VOTRE-EMAIL@EXEMPLE.FR',
+  contactEmail: 'chicoailton@gmail.com',
   instagramUrl: 'https://instagram.com/VOTRE_PROFIL'
 };
 
@@ -1087,30 +1090,8 @@ document.addEventListener('keydown', (event) => {
   if (event.key === 'Escape') closeModal();
 });
 
-// Formulário de contato: abre o aplicativo de e-mail do visitante.
-$('contactForm').addEventListener('submit', (event) => {
-  event.preventDefault();
+// Formulaire envoyé directement via FormSubmit (aucun client e-mail requis).
 
-  if (CONFIG.contactEmail.includes('EXEMPLE.FR')) {
-    $('formInfo').textContent =
-      'Avant de continuer, renseignez votre adresse e-mail dans CONFIG.contactEmail du fichier index.html.';
-    return;
-  }
-
-  const name = $('name').value;
-  const email = $('email').value;
-  const subject = $('subject').value;
-  const message = $('message').value;
-
-  const title = subject
-    ? 'Renseignements sur l’œuvre : ' + subject
-    : 'Contact via la galerie';
-
-  const body = `Bonjour !\n\n${message}\n\nŒuvre : ${subject || 'Non précisée'}\nNom : ${name}\nE-mail : ${email}`;
-
-  window.location.href =
-    `mailto:${CONFIG.contactEmail}?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(body)}`;
-});
   </script>
  </body>
 </html>
