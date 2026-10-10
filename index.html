@@ -771,6 +771,37 @@ footer::after {
 .gallery .piece h3 { font-size:16px; line-height:1.4; margin:13px 0 5px; font-weight:750; letter-spacing:-.02em; text-align:center; }
 .gallery .piece .small { text-align:center; font-size:12px; }
 @media(max-width:760px) { .gallery .piece h3 { font-size:15px; } }
+
+/* Obra em destaque na seção L’artiste — personalize imagem e etiqueta no HTML */
+.about-art-frame {
+  width:min(100%, 440px);
+  justify-self:center;
+  position:relative;
+  background:#0000FF; /* RGB: moldura azul */
+  padding:16px;
+  transform:rotate(-2deg);
+  box-shadow:18px 18px 0 #FF0000; /* RGB: sombra vermelha */
+  isolation:isolate;
+}
+.about-art-photo { display:block; width:100%; height:auto; object-fit:contain; }
+.about-art-label {
+  position:absolute;
+  z-index:2;
+  top:18px;
+  right:-15px;
+  max-width:85%;
+  padding:12px 16px;
+  background:#00FF00; /* RGB: etiqueta verde */
+  color:#111;
+  font:900 12px/1.2 Arial,Helvetica,sans-serif;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  transform:rotate(8deg);
+  overflow-wrap:anywhere;
+}
+@media(max-width:760px) {
+  .about-art-frame { width:min(85%,440px); box-shadow:10px 10px 0 #FF0000; }
+}
 </style>
  </head>
  <body>
@@ -843,9 +874,11 @@ footer::after {
    </section>
    <section class="section about" id="apropos">
     <div class="wrap aboutgrid">
-     <div class="aboutvisual">
-      création &amp; expression
-     </div>
+     <!-- OBRA DA SEÇÃO L’ARTISTE: altere o arquivo e o nome abaixo -->
+      <div class="about-art-frame">
+        <img src="RunBabyRun.jpg" alt="Run baby run" class="about-art-photo">
+        <span class="about-art-label">RUN BABY RUN</span>
+      </div>
      <div>
       <div class="eyebrow">
        L’artiste
